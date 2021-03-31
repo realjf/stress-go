@@ -1,5 +1,5 @@
 // stdout_output.c
-#include "ncurses.h"
+#include "stdout_output.h"
 
 void PrintHello() {
     initscr();

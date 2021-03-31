@@ -3,6 +3,7 @@
 #define STDOUT_OUTPUT_H__
 #include "ncurses.h"
 
+//export 
 void PrintHello();
 
 #endif
