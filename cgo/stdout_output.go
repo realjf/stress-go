@@ -1,7 +1,7 @@
 package cgo
 
 /*
-#include <ncurses.h>
+#include "ncurses.h"
 
 void Draw() {
     initscr();
