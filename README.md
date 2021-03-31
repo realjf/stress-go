@@ -1,10 +1,12 @@
 # stress-go
-压测工具
+ a stress test tool（压测工具）
 
 ### 目录结构
 
 ```
 |---- main.go // main主函数
+|---- cgo
+|      |---- stdout_output.go
 |---- server
 |       |---- dispose.go // 压测启动，注册验证器、启动统计函数、启动协程进行压测
 |       |---- statistics 
@@ -23,7 +25,7 @@
 |---- model
 |      |---- request_model.go // 请求数据模型
 |      |---- curl_model.go
-|---- vendor
+
 
 ```
 
