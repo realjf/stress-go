@@ -1,7 +1,9 @@
 package cgo
 
-// #cgo LDFLAGS: -lncurses
-// #include "stdout_output.h"
+//#cgo CFLAGS: -I.
+//#cgo LDFLAGS: -lncurses
+//#include "stdout_output.h"
+//#include <stdlib.h>
 import "C"
 
 import (
@@ -26,8 +28,9 @@ func DrawTable() *C.char {
 	// fmt.Println(result)
 	th += "─────┼───────┼───────┼───────┼────────┼────────┼────────┼────────┼────────┼────────┼────────"
 	th += "\n"
-	char := C.CString(th)
-    strptr := (*C.char)(unsafe.Pointer(char))
+	cstr := C.CString(th)
+	defer C.free(unsafe.Pointer(cstr)) // 释放内存
+    strptr := (*C.char)(unsafe.Pointer(cstr))
 	return strptr
 }
 

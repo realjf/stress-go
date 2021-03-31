@@ -65,6 +65,7 @@ func Init() {
 
 func main() {
 	runtime.GOMAXPROCS(runtime.NumCPU())
+	cgo.SayHello()
 
 	flag.Uint64Var(&args.ConcurrencyNum, "c", args.ConcurrencyNum, "并发数")
 	flag.Uint64Var(&args.RequestNum, "n", args.RequestNum, "单个用户请求总数")
@@ -84,9 +85,7 @@ func main() {
 		// fmt.Println("\t-d 调试模式，默认是0")
 		// fmt.Println("\t-n 单个用户请求总数")
 		// fmt.Println("\t-data HTTP POST数据")
-		// flag.Usage()
-		// return
+		flag.Usage()
+		return
 	}
-
-	cgo.SayHello()
 }
