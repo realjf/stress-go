@@ -3,6 +3,6 @@
 #define STDOUT_OUTPUT_H__
 #include "ncurses.h"
 
-void Draw();
+void PrintHello();
 
 #endif

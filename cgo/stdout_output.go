@@ -5,5 +5,5 @@ package cgo
 import "C"
 
 func SayHello() {
-	C.Draw()
+	C.PrintHello()
 }

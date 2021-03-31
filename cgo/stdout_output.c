@@ -1,7 +1,7 @@
 // stdout_output.c
-#include "stdout_output.h"
+#include "ncurses.h"
 
-void Draw() {
+void PrintHello() {
     initscr();
     printw("Hello World!!!");
     refresh();
