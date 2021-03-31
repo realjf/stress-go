@@ -88,5 +88,5 @@ func main() {
 		return
 	}
 
-	cgo.Draw()
+	cgo.SayHello()
 }

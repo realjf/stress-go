@@ -1,8 +1,5 @@
 // stdout_output.c
-
-extern "C" {
-    #include "stdout_output.hpp"
-}
+#include "stdout_output.h"
 
 void Draw() {
     initscr();

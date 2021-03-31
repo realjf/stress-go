@@ -1,8 +1,18 @@
 package cgo
 
-//#include <stdout_output.hpp>
+/*
+#include <ncurses.h>
+
+void Draw() {
+    initscr();
+    printw("Hello World!!!");
+    refresh();
+    getch();
+    endwin();
+}
+*/
 import "C"
 
-func Draw() {
+func SayHello() {
 	C.Draw()
 }
