@@ -1,6 +1,6 @@
 package cgo
 
-//#cgo CFLAGS: -I.
+//#cgo CFLAGS: -I. -std=c99 -Wall
 //#cgo LDFLAGS: -lncurses
 //#include "stdout_output.h"
 //#include <stdlib.h>
