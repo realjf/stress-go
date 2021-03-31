@@ -1,16 +1,7 @@
 package cgo
 
-/*
-#include "ncurses.h"
-
-void Draw() {
-    initscr();
-    printw("Hello World!!!");
-    refresh();
-    getch();
-    endwin();
-}
-*/
+// #cgo LDFLAGS: -lncurses
+//#include "stdout_output.c"
 import "C"
 
 func SayHello() {
