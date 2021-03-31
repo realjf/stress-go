@@ -1,8 +1,10 @@
 // stdout_output.c
-#include <ncurses.h>
 
-void Draw()
-{
+extern "C" {
+    #include "stdout_output.hpp"
+}
+
+void Draw() {
     initscr();
     printw("Hello World!!!");
     refresh();
