@@ -5,6 +5,7 @@
 #include <locale.h> // 中文乱码问题
 
 void PrintHello();
-extern char* DrawTable();
+extern char* DrawTh();
+extern char* DrawTd();
 
 #endif
