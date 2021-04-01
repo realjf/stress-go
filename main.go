@@ -1,9 +1,10 @@
 package main
 
 import (
-	"runtime"
 	"flag"
 	"fmt"
+	"runtime"
+
 	"github.com/realjf/stress-go/cgo"
 )
 
@@ -34,12 +35,12 @@ func (a *Array) String() string {
 
 type Args struct {
 	ConcurrencyNum uint64 // 并发数
-	RequestNum uint64 // 请求数（单个用户）
-	Debug uint64 // 调试模式 default=0
-	Url string // 压测地址
-	Path string // curl文件路径
-	Headers Array // 自定义头部信息
-	Body string // post数据
+	RequestNum     uint64 // 请求数（单个用户）
+	Debug          uint64 // 调试模式 default=0
+	Url            string // 压测地址
+	Path           string // curl文件路径
+	Headers        Array  // 自定义头部信息
+	Body           string // post数据
 }
 
 type RequestResults struct {
@@ -54,12 +55,12 @@ type RequestResults struct {
 func Init() {
 	args = Args{
 		ConcurrencyNum: 1,
-		RequestNum: 1,
-		Debug: 0,
-		Url: "",
-		Path: "",
-		Headers: make([]string, 0),
-		Body: "",
+		RequestNum:     1,
+		Debug:          0,
+		Url:            "",
+		Path:           "",
+		Headers:        make([]string, 0),
+		Body:           "",
 	}
 }
 
@@ -77,14 +78,6 @@ func main() {
 	flag.Parse()
 
 	if args.Url == "" || args.ConcurrencyNum == 0 || args.RequestNum == 0 {
-		// fmt.Println("Usage:")
-		// fmt.Println("\t-c 并发数")
-		// fmt.Println("\t-H 自定义头部信息")
-		// fmt.Println("\t-p curl文件路径")
-		// fmt.Println("\t-u 压测地址")
-		// fmt.Println("\t-d 调试模式，默认是0")
-		// fmt.Println("\t-n 单个用户请求总数")
-		// fmt.Println("\t-data HTTP POST数据")
 		flag.Usage()
 		return
 	}

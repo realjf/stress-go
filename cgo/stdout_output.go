@@ -3,11 +3,12 @@ package cgo
 //#cgo CFLAGS: -I. -std=c99 -Wall
 //#cgo LDFLAGS: -lncursesw
 //#include "stdout_output.h"
-//#include <stdlib.h>
 import "C"
 
 import (
 	"fmt"
+	"sort"
+	"strings"
 )
 
 func SayHello() {
@@ -31,8 +32,27 @@ func DrawTh() *C.char {
 }
 
 //export DrawTd
-func DrawTd(totalTime int, concurrency int, success int, failure int, qps int, maxTime int, minTime int, avgTime int, downloadByte int, byteSecond int, errorCode int) *C.char {
-	td := fmt.Sprintf("| |")
+func DrawTd(requestTimeFloat float64, concurrency int64, successNum int, failureNum int, qps int,
+	maxTimeFloat float64, minTimeFloat float64, avgTime int, receivedBytesStr string, speedStr string, errorCode map[int]int) *C.char {
+	// 打印的时长都为毫秒
+	td := fmt.Sprintf("%4.0fs│%7d│%7d│%7d│%8.2f│%8.2f│%8.2f│%8.2f│%8s│%8s│%v",
+		requestTimeFloat, concurrency, successNum, failureNum, qps, maxTimeFloat, minTimeFloat, avgTime,
+		receivedBytesStr, speedStr,
+		printMap(errorCode))
 	td += fmt.Sprintln()
 	return C.CString(td)
+}
+
+// 输出错误码、次数 节约字符(终端一行字符大小有限)
+func printMap(errCode map[int]int) (mapStr string) {
+	var (
+		mapArr []string
+	)
+	for key, value := range errCode {
+		mapArr = append(mapArr, fmt.Sprintf("%d:%d", key, value))
+	}
+	sort.Strings(mapArr)
+	mapStr = strings.Join(mapArr, ";")
+
+	return
 }
