@@ -113,9 +113,41 @@ func VDivider() *C.char {
 }
 
 func PrintField(field string) {
-	SetBlue()
+	// 设置颜色
+	var color FieldColor = Yellow
+	switch color {
+	case Blue:
+		SetBlue()
+	case Red:
+		SetRed()
+	case Green:
+		SetGreen()
+	case Yellow:
+		SetYellow()
+	case Cyan:
+		SetCyan()
+	case Magenta:
+		SetMagenta()
+	default:
+		SetBlue()
+	}
 	C.PrintField(C.CString(field))
-	OffBlue()
+	switch color {
+	case Blue:
+		OffBlue()
+	case Red:
+		OffRed()
+	case Green:
+		OffGreen()
+	case Yellow:
+		OffYellow()
+	case Cyan:
+		OffCyan()
+	case Magenta:
+		OffMagenta()
+	default:
+		OffBlue()
+	}
 }
 
 func Field(field string) *C.char {

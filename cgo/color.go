@@ -5,6 +5,19 @@ package cgo
 //#include "color.h"
 import "C"
 
+type FieldColor int
+
+const (
+	_ FieldColor = iota
+	Blue
+	Red
+	Green
+	Yellow
+	Cyan
+	Magenta
+	White
+)
+
 // 开启颜色功能
 func StartColor() {
 	C.StartColor()
