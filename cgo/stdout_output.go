@@ -49,7 +49,7 @@ func HeaderLine() *C.char {
 // 打印表头
 func PrintHeader() {
 	// C.PrintHeader()
-	PrintField(" 耗时")
+	PrintField("   耗时")
 	PrintVDivider()
 	PrintField(" 并发数")
 	PrintVDivider()

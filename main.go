@@ -52,7 +52,7 @@ func Init() {
 
 func main() {
 	runtime.GOMAXPROCS(runtime.NumCPU())
-
+	Init()
 	flag.Uint64Var(&args.ConcurrencyNum, "c", args.ConcurrencyNum, "并发数")
 	flag.Uint64Var(&args.RequestNum, "n", args.RequestNum, "单个用户请求总数")
 	flag.Uint64Var(&args.Debug, "d", args.Debug, "调试模式")
@@ -61,6 +61,7 @@ func main() {
 	flag.Var(&args.Headers, "H", "自定义头部信息，如：-H 'Content-Type: application/json'")
 	flag.StringVar(&args.Body, "data", "", "http post数据")
 	flag.Parse()
+
 	if args.Url == "" || args.ConcurrencyNum == 0 || args.RequestNum == 0 {
 		flag.Usage()
 		return
