@@ -18,9 +18,9 @@ void StartWin() {
     setlocale(LC_ALL,"");
     setlocale(LC_CTYPE,"C-UTF-8");
     initscr();
-    keypad(stdscr, TRUE);
-    cbreak();
-    noecho();
+    keypad(stdscr, TRUE); // 设置把收到的特殊键比如箭头,转化为ncurses定义的以KEY开头的数字宏
+    cbreak(); // 设置无buff模式，只有newline和return才会让getch返回
+    noecho(); // 设置无回显模式
     StartColor();
     clear();
 }
