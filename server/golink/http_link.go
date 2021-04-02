@@ -26,6 +26,7 @@ func Send(request *model.Request) (bool, int, uint64, int64) {
 
 		// 验证请求是否成功
 		// errCode, isSucceed = newRequest.GetVerifyHttp()(newRequest, resp)
+		isSucceed = true
 	}
 	return isSucceed, errCode, requestTime, contentLength
 }
