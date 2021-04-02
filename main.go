@@ -67,7 +67,18 @@ func Init() {
 func main() {
 	runtime.GOMAXPROCS(runtime.NumCPU())
 	cgo.StartWin()
-	cgo.DrawTable()
+	cgo.SetBlue()
+	cgo.PrintHeaderLine()
+	cgo.OffBlue()
+
+	cgo.SetRed()
+	cgo.PrintHeader()
+	cgo.OffRed()
+
+	cgo.SetBlue()
+	cgo.PrintDivider()
+	cgo.DrawTableLine()
+	cgo.OffBlue()
 	cgo.EndWin()
 
 	flag.Uint64Var(&args.ConcurrencyNum, "c", args.ConcurrencyNum, "并发数")

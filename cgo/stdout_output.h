@@ -7,10 +7,18 @@
 
 void StartWin();
 void EndWin();
+void PrintDivider();
+void PrintHeaderLine();
+void PrintHeader();
 void DrawTb(double requestTimeFloat,int concurrency,int successNum,int failureNum,double qps,
 	double maxTimeFloat,double minTimeFloat,double avgTime, char* receivedBytesStr, char* speedStr);
+
+
 extern char* DrawTh();
 extern char* DrawTd(double requestTimeFloat,int concurrency,int successNum,int failureNum,double qps,
 	double maxTimeFloat,double minTimeFloat,double avgTime, char* receivedBytesStr, char* speedStr);
+extern char* Divider();
+extern char* HeaderLine();
+
 
 #endif
