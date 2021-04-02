@@ -4,11 +4,13 @@ import (
 	"github.com/realjf/gopool"
 	"fmt"
 	"github.com/realjf/stress-go/model"
+	"github.com/realjf/stress-go/server/golink"
 )
 
 // 设置任务函数
 func taskFunc(args interface{}) (error, interface{}) {
 	//fmt.Println("task ", args, "completed")
+	golink.Send(args.(*model.Request))
 	_ = 1 + 1
 	return nil, args
 }
@@ -21,14 +23,14 @@ func callbackFunc(result interface{}) (error, interface{}) {
 }
 
 // 运行压测
-func Run(request *model.Request) {
-	requestPool := gopool.NewPool(1000)
-	requestPool.SetTaskNum(10000) // 设置任务总数
+func Run(concurrency, totalNumber uint64, request *model.Request) {
+	requestPool := gopool.NewPool(int(concurrency))
+	requestPool.SetTaskNum(int(totalNumber)) // 设置任务总数
 	
 	// 添加任务
 	go func(){
-		for i := 0; i < 10000; i++ {
-			requestPool.AddTask(gopool.NewTask(taskFunc, callbackFunc, i))
+		for i := 0; i < int(totalNumber); i++ {
+			requestPool.AddTask(gopool.NewTask(taskFunc, callbackFunc, request))
 		}
 	}()
 	
@@ -37,7 +39,7 @@ func Run(request *model.Request) {
 	
 	fmt.Println("result:")
 	// 获取运行结果
-	fmt.Println(requestPool.GetResult())
+	// fmt.Println(requestPool.GetResult())
 	
 	// 获取总运行时间
 	fmt.Println(requestPool.GetRunTime())

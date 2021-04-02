@@ -4,6 +4,7 @@ import (
 	"strings"
 	"time"
 	"fmt"
+	"io"
 )
 
 // 请求结果
@@ -15,6 +16,13 @@ type Request struct {
 	Timeout time.Duration     // 请求超时时间
 	Debug   bool              // 是否开启Debug模式
 }
+
+func (r *Request) GetBody() (body io.Reader) {
+	body = strings.NewReader(r.Body)
+
+	return
+}
+
 
 func NewRequest(url string, timeout time.Duration, reqHeaders []string, reqBody string, debug bool) (request *Request, err error) {
 	// 解析url

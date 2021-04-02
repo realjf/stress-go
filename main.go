@@ -87,5 +87,5 @@ func main() {
 		return 
 	}
 
-	server.Run(request)
+	server.Run(args.ConcurrencyNum, args.RequestNum, request)
 }
