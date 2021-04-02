@@ -51,18 +51,11 @@ func main() {
 	runtime.GOMAXPROCS(runtime.NumCPU())
 	
 	cgo.StartWin()
-	cgo.SetBlue()
 	cgo.PrintHeaderLine()
-	cgo.OffBlue()
 
-	cgo.SetRed()
 	cgo.PrintHeader()
-	cgo.OffRed()
-
-	cgo.SetBlue()
 	cgo.PrintDivider()
-	cgo.DrawTableLine()
-	cgo.OffBlue()
+	cgo.PrintTd(234, 4234, 4223, 1, 3223, 234.2, 23.2, 54.2, "1234.2", "123.2")
 	cgo.EndWin()
 
 	flag.Uint64Var(&args.ConcurrencyNum, "c", args.ConcurrencyNum, "并发数")

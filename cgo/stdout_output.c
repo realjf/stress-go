@@ -6,12 +6,20 @@ void PrintDivider() {
     printw(Divider());
 }
 
+void PrintVDivider() {
+    printw(VDivider());
+}
+
 void PrintHeaderLine() {
     printw(HeaderLine());
 }
 
 void PrintHeader() {
    printw(DrawTh());
+}
+
+void PrintField(char* field) {
+    printw(field);
 }
 
 void StartWin() {

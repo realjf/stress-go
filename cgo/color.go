@@ -58,3 +58,11 @@ func SetMagenta() {
 func OffMagenta() {
 	C.OffMagenta()
 }
+
+func SetWhite() {
+	C.SetWhite()
+}
+
+func OffWhite() {
+	C.OffWhite()
+}

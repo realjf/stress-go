@@ -20,6 +20,7 @@ void StartColor() {
     init_pair(GREEN, COLOR_GREEN, COLOR_BLACK);
     init_pair(CYAN, COLOR_CYAN, COLOR_BLACK);
     init_pair(MAGENTA, COLOR_MAGENTA, COLOR_BLACK);
+    init_pair(WHITE, COLOR_WHITE, COLOR_BLACK);
 }
 
 void SetBlue() {
@@ -70,3 +71,10 @@ void OffMagenta() {
     attroff(COLOR_PAIR(MAGENTA));
 }
 
+void SetWhite() {
+    attron(COLOR_PAIR(WHITE));
+}
+
+void OffWhite() {
+    attroff(COLOR_PAIR(WHITE));
+}

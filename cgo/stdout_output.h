@@ -10,6 +10,8 @@ void EndWin();
 void PrintDivider();
 void PrintHeaderLine();
 void PrintHeader();
+void PrintVDivider();
+void PrintField(char* field);
 void DrawTb(double requestTimeFloat,int concurrency,int successNum,int failureNum,double qps,
 	double maxTimeFloat,double minTimeFloat,double avgTime, char* receivedBytesStr, char* speedStr);
 
@@ -19,6 +21,8 @@ extern char* DrawTd(double requestTimeFloat,int concurrency,int successNum,int f
 	double maxTimeFloat,double minTimeFloat,double avgTime, char* receivedBytesStr, char* speedStr);
 extern char* Divider();
 extern char* HeaderLine();
+extern char* VDivider();
+extern char* Field();
 
 
 #endif

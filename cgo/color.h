@@ -25,5 +25,7 @@ void SetCyan();
 void OffCyan();
 void SetMagenta();
 void OffMagenta();
+void SetWhite();
+void OffWhite();
 
 #endif

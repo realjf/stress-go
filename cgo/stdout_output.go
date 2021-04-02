@@ -25,11 +25,15 @@ func DrawTableLine() {
 }
 
 func PrintHeaderLine() {
+	SetWhite()
 	C.PrintHeaderLine()
+	OffWhite()
 }
 
 func PrintDivider() {
+	SetWhite()
 	C.PrintDivider()
+	OffWhite()
 }
 
 //export Divider
@@ -42,8 +46,80 @@ func HeaderLine() *C.char {
 	return C.CString(fmt.Sprintln("─────┬───────┬───────┬───────┬────────┬────────┬────────┬────────┬────────┬────────┬────────"))
 }
 
+// 打印表头
 func PrintHeader() {
-	C.PrintHeader()
+	// C.PrintHeader()
+	PrintField(" 耗时")
+	PrintVDivider()
+	PrintField(" 并发数")
+	PrintVDivider()
+	PrintField(" 成功数")
+	PrintVDivider()
+	PrintField(" 失败数")
+	PrintVDivider()
+	PrintField("   qps  ")
+	PrintVDivider()
+	PrintField("最长耗时")
+	PrintVDivider()
+	PrintField("最短耗时")
+	PrintVDivider()
+	PrintField("平均耗时")
+	PrintVDivider()
+	PrintField("下载字节")
+	PrintVDivider()
+	PrintField("字节每秒")
+	PrintVDivider()
+	PrintField(" 错误码")
+
+	PrintField("\n")
+}
+
+func PrintTd(requestTimeFloat float64, concurrency int, successNum int, failureNum int, qps float64,
+	maxTimeFloat float64, minTimeFloat float64, avgTime float64, receivedBytesStr string, speedStr string) {
+	PrintField(fmt.Sprintf("%4.0fs", requestTimeFloat))
+	PrintVDivider()
+	PrintField(fmt.Sprintf("%7d", concurrency))
+	PrintVDivider()
+	PrintField(fmt.Sprintf("%7d", successNum))
+	PrintVDivider()
+	PrintField(fmt.Sprintf("%7d", failureNum))
+	PrintVDivider()
+	PrintField(fmt.Sprintf("%8.2f", qps))
+	PrintVDivider()
+	PrintField(fmt.Sprintf("%8.2f", maxTimeFloat))
+	PrintVDivider()
+	PrintField(fmt.Sprintf("%8.2f", minTimeFloat))
+	PrintVDivider()
+	PrintField(fmt.Sprintf("%8.2f", avgTime))
+	PrintVDivider()
+	PrintField(fmt.Sprintf("%8s", receivedBytesStr))
+	PrintVDivider()
+	PrintField(fmt.Sprintf("%8s", speedStr))
+	PrintVDivider()
+	PrintField(" 错误码")
+
+	PrintField("\n")
+}
+
+func PrintVDivider() {
+	SetWhite()
+	C.PrintVDivider()
+	OffWhite()
+}
+
+//export VDivider
+func VDivider() *C.char {
+	return C.CString(fmt.Sprint("│"))
+}
+
+func PrintField(field string) {
+	SetBlue()
+	C.PrintField(C.CString(field))
+	OffBlue()
+}
+
+func Field(field string) *C.char {
+	return C.CString(field)
 }
 
 //export DrawTh
@@ -51,8 +127,6 @@ func DrawTh() *C.char {
 	// 打印的时长都为毫秒 总请数
 	th := fmt.Sprintf(" 耗时│ 并发数│ 成功数│ 失败数│   qps  │最长耗时│最短耗时│平均耗时│下载字节│字节每秒│ 错误码")
 	th += fmt.Sprintln()
-	// result = fmt.Sprintf("耗时(s)  │总请求数│成功数│失败数│QPS│最长耗时│最短耗时│平均耗时│错误码")
-	// fmt.Println(result)
 	// cstr := C.CString(th)
 	// defer C.free(unsafe.Pointer(cstr)) // 释放内存
 	// strptr := (*C.char)(unsafe.Pointer(cstr))
