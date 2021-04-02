@@ -10,8 +10,9 @@
 #define MAGENTA 7 // 品红色
 #define WHITE 8
 
-
+// 开始颜色
 void StartColor();
+
 void SetBlue();
 void SetRed();
 void OffBlue();

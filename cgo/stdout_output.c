@@ -22,6 +22,7 @@ void StartWin() {
     cbreak();
     noecho();
     StartColor();
+    clear();
 }
 
 void DrawTb(double requestTimeFloat,int concurrency,int successNum,int failureNum,double qps,

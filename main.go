@@ -4,7 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"runtime"
-
+	"github.com/realjf/stress-go/server"
 	"github.com/realjf/stress-go/cgo"
 )
 
@@ -94,4 +94,6 @@ func main() {
 		flag.Usage()
 		return
 	}
+
+	server.Run()
 }
