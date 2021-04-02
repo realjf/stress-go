@@ -3,6 +3,7 @@ package server
 import (
 	"github.com/realjf/gopool"
 	"fmt"
+	"github.com/realjf/stress-go/model"
 )
 
 // 设置任务函数
@@ -20,7 +21,7 @@ func callbackFunc(result interface{}) (error, interface{}) {
 }
 
 // 运行压测
-func Run() {
+func Run(request *model.Request) {
 	requestPool := gopool.NewPool(1000)
 	requestPool.SetTaskNum(10000) // 设置任务总数
 	

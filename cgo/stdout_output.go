@@ -38,12 +38,12 @@ func PrintDivider() {
 
 //export Divider
 func Divider() *C.char {
-	return C.CString(fmt.Sprintln("─────┼───────┼───────┼───────┼────────┼────────┼────────┼────────┼────────┼────────┼────────"))
+	return C.CString(fmt.Sprintln("───────┼───────┼───────┼───────┼────────┼────────┼────────┼────────┼────────┼────────┼────────"))
 }
 
 //export HeaderLine
 func HeaderLine() *C.char {
-	return C.CString(fmt.Sprintln("─────┬───────┬───────┬───────┬────────┬────────┬────────┬────────┬────────┬────────┬────────"))
+	return C.CString(fmt.Sprintln("───────┬───────┬───────┬───────┬────────┬────────┬────────┬────────┬────────┬────────┬────────"))
 }
 
 // 打印表头
@@ -76,7 +76,7 @@ func PrintHeader() {
 
 func PrintTd(requestTimeFloat float64, concurrency int, successNum int, failureNum int, qps float64,
 	maxTimeFloat float64, minTimeFloat float64, avgTime float64, receivedBytesStr string, speedStr string) {
-	PrintField(fmt.Sprintf("%4.0fs", requestTimeFloat))
+	PrintField(fmt.Sprintf("%4.2fs", requestTimeFloat))
 	PrintVDivider()
 	PrintField(fmt.Sprintf("%7d", concurrency))
 	PrintVDivider()
