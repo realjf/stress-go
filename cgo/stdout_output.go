@@ -20,7 +20,7 @@ func EndWin() {
 }
 
 func DrawTable() {
-	C.DrawTb(C.double(132.2), C.int(4134), C.int(323), C.int(433), C.double(13434), C.double(43.23), C.double(3.2), C.double(32.2), C.CString("4342"), C.CString("2343"))
+	C.DrawTb(C.double(132.2), C.int(4134), C.int(323), C.int(433), C.double(1334), C.double(43.23), C.double(3.2), C.double(32.2), C.CString("4342"), C.CString("2343"))
 }
 
 //export DrawTh
@@ -45,7 +45,7 @@ func DrawTd(requestTimeFloat C.double, concurrency C.int, successNum C.int, fail
 	// 打印的时长都为毫秒
 	td := fmt.Sprintf("%4.0fs│%7d│%7d│%7d│%8.2f│%8.2f│%8.2f│%8.2f│%8s│%8s│%v",
 		requestTimeFloat, concurrency, successNum, failureNum, qps, maxTimeFloat, minTimeFloat, avgTime,
-		receivedBytesStr, speedStr)
+		C.GoString(receivedBytesStr), C.GoString(speedStr))
 	td += fmt.Sprintln()
 	return C.CString(td)
 }
