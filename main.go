@@ -66,7 +66,9 @@ func Init() {
 
 func main() {
 	runtime.GOMAXPROCS(runtime.NumCPU())
-	cgo.SayHello()
+	cgo.StartWin()
+	cgo.DrawTable()
+	cgo.EndWin()
 
 	flag.Uint64Var(&args.ConcurrencyNum, "c", args.ConcurrencyNum, "并发数")
 	flag.Uint64Var(&args.RequestNum, "n", args.RequestNum, "单个用户请求总数")

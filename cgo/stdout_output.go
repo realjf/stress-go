@@ -11,8 +11,16 @@ import (
 	"strings"
 )
 
-func SayHello() {
-	C.PrintHello()
+func StartWin() {
+	C.StartWin()
+}
+
+func EndWin() {
+	C.EndWin()
+}
+
+func DrawTable() {
+	C.DrawTb(C.double(132.2), C.int(4134), C.int(323), C.int(433), C.double(13434), C.double(43.23), C.double(3.2), C.double(32.2), C.CString("4342"), C.CString("2343"))
 }
 
 //export DrawTh
@@ -32,13 +40,12 @@ func DrawTh() *C.char {
 }
 
 //export DrawTd
-func DrawTd(requestTimeFloat float64, concurrency int64, successNum int, failureNum int, qps int,
-	maxTimeFloat float64, minTimeFloat float64, avgTime int, receivedBytesStr string, speedStr string, errorCode map[int]int) *C.char {
+func DrawTd(requestTimeFloat C.double, concurrency C.int, successNum C.int, failureNum C.int, qps C.double,
+	maxTimeFloat C.double, minTimeFloat C.double, avgTime C.double, receivedBytesStr *C.char, speedStr *C.char) *C.char {
 	// 打印的时长都为毫秒
 	td := fmt.Sprintf("%4.0fs│%7d│%7d│%7d│%8.2f│%8.2f│%8.2f│%8.2f│%8s│%8s│%v",
 		requestTimeFloat, concurrency, successNum, failureNum, qps, maxTimeFloat, minTimeFloat, avgTime,
-		receivedBytesStr, speedStr,
-		printMap(errorCode))
+		receivedBytesStr, speedStr)
 	td += fmt.Sprintln()
 	return C.CString(td)
 }

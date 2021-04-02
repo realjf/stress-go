@@ -5,8 +5,12 @@
 #include <locale.h> // 中文乱码问题
 #include <stdlib.h>
 
-void PrintHello();
+void StartWin();
+void EndWin();
+void DrawTb(double requestTimeFloat,int concurrency,int successNum,int failureNum,double qps,
+	double maxTimeFloat,double minTimeFloat,double avgTime, char* receivedBytesStr, char* speedStr);
 extern char* DrawTh();
-extern char* DrawTd();
+extern char* DrawTd(double requestTimeFloat,int concurrency,int successNum,int failureNum,double qps,
+	double maxTimeFloat,double minTimeFloat,double avgTime, char* receivedBytesStr, char* speedStr);
 
 #endif
