@@ -1,8 +1,9 @@
 package server
 
 import (
-	"github.com/realjf/gopool"
 	"fmt"
+
+	"github.com/realjf/gopool"
 	"github.com/realjf/stress-go/model"
 	"github.com/realjf/stress-go/server/golink"
 )
@@ -13,7 +14,6 @@ func taskFunc(args interface{}) (error, interface{}) {
 	isSucceed, errCode, requestTime, contentLength := golink.Send(args.(*model.Request))
 	result := []interface{}{}
 	result = append(result, isSucceed, errCode, requestTime, contentLength)
-	_ = 1 + 1
 	return nil, result
 }
 
@@ -30,22 +30,21 @@ func callbackFunc(result interface{}) (error, interface{}) {
 func Run(concurrency, totalNumber uint64, request *model.Request) {
 	requestPool := gopool.NewPool(int(concurrency))
 	requestPool.SetTaskNum(int(totalNumber)) // 设置任务总数
-	
+
 	// 添加任务
-	go func(){
+	go func() {
 		for i := 0; i < int(totalNumber); i++ {
 			requestPool.AddTask(gopool.NewTask(taskFunc, callbackFunc, request))
 		}
 	}()
-	
+
 	// 开始运行
 	requestPool.Run()
-	
+
 	fmt.Println("result:")
 	// 获取运行结果
 	fmt.Println(requestPool.GetResult())
-	
+
 	// 获取总运行时间
 	fmt.Println(requestPool.GetRunTime())
 }
-
