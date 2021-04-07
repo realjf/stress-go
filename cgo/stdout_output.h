@@ -4,6 +4,9 @@
 #include "ncurses.h"
 #include <locale.h> // 中文乱码问题
 #include <stdlib.h>
+#include <termios.h>
+#include <fcntl.h>
+#include <unistd.h>
 
 void StartWin();
 void EndWin();

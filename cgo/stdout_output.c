@@ -2,6 +2,8 @@
 #include "stdout_output.h"
 #include "color.h"
 
+struct termios oldt;
+
 void PrintDivider() {
     printw(Divider());
 }
@@ -23,6 +25,15 @@ void PrintField(char* field) {
 }
 
 void StartWin() {
+    if (!isatty(STDIN_FILENO)) {
+        fprintf(stderr, "this problem should be run at a terminal\n");
+        exit(1);
+    }
+    // save terminal setting
+    if(tcgetattr(STDIN_FILENO, &oldt) < 0) {
+        perror("save the terminal setting");
+        exit(1);
+    }
     setlocale(LC_ALL,"");
     setlocale(LC_CTYPE,"C-UTF-8");
     initscr();
@@ -41,5 +52,10 @@ void DrawTb(double requestTimeFloat,int concurrency,int successNum,int failureNu
 
 void EndWin() {
     getch();
+    // restore termial setting
+    if(tcsetattr(STDIN_FILENO,TCSANOW, &oldt) < 0) {
+        perror("restore the termial setting");
+        exit(1);
+    }
     endwin();
 }
