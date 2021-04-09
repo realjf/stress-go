@@ -1,14 +1,14 @@
 #include "ncurses.h"
 #include "color.h"
 
-extern WINDOW *my_win;
+extern WINDOW *scrwin;
 
 void StartColor() {
     /**
      * 初始化颜色
      */
     if (has_colors() == FALSE) {
-        delwin(my_win);
+        delwin(scrwin);
         endwin();
         printf("Your terminal does not support color\n");
         return;
@@ -26,57 +26,57 @@ void StartColor() {
 }
 
 void SetBlue() {
-    wattron(my_win, COLOR_PAIR(BLUE));
+    wattron(scrwin, COLOR_PAIR(BLUE));
 }
 
 void SetRed() {
-    wattron(my_win,COLOR_PAIR(RED));
+    wattron(scrwin,COLOR_PAIR(RED));
 }
 
 void OffBlue() {
-    wattroff(my_win, COLOR_PAIR(BLUE));
+    wattroff(scrwin, COLOR_PAIR(BLUE));
 }
 
 void OffRed() {
-    wattroff(my_win, COLOR_PAIR(RED));
+    wattroff(scrwin, COLOR_PAIR(RED));
 }
 
 void SetGreen() {
-    wattron(my_win, COLOR_PAIR(GREEN));
+    wattron(scrwin, COLOR_PAIR(GREEN));
 }
 
 void OffGreen() {
-    wattroff(my_win, COLOR_PAIR(GREEN));
+    wattroff(scrwin, COLOR_PAIR(GREEN));
 }
 
 void SetYellow() {
-    wattron(my_win, COLOR_PAIR(YELLOW));
+    wattron(scrwin, COLOR_PAIR(YELLOW));
 }
 
 void OffYellow() {
-    wattroff(my_win, COLOR_PAIR(YELLOW));
+    wattroff(scrwin, COLOR_PAIR(YELLOW));
 }
 
 void SetCyan() {
-    wattron(my_win, COLOR_PAIR(CYAN));
+    wattron(scrwin, COLOR_PAIR(CYAN));
 }
 
 void OffCyan() {
-    wattroff(my_win, COLOR_PAIR(CYAN));
+    wattroff(scrwin, COLOR_PAIR(CYAN));
 }
 
 void SetMagenta() {
-    wattron(my_win, COLOR_PAIR(MAGENTA));
+    wattron(scrwin, COLOR_PAIR(MAGENTA));
 }
 
 void OffMagenta() {
-    wattroff(my_win, COLOR_PAIR(MAGENTA));
+    wattroff(scrwin, COLOR_PAIR(MAGENTA));
 }
 
 void SetWhite() {
-    wattron(my_win,COLOR_PAIR(WHITE));
+    wattron(scrwin,COLOR_PAIR(WHITE));
 }
 
 void OffWhite() {
-    wattroff(my_win, COLOR_PAIR(WHITE));
+    wattroff(scrwin, COLOR_PAIR(WHITE));
 }
