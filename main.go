@@ -67,12 +67,8 @@ func main() {
 		return
 	}
 
-	cgo.StartWin()
-	cgo.PrintHeaderLine()
-	cgo.PrintHeader()
-	cgo.PrintDivider()
-	cgo.PrintTd(234, 4234, 4223, 1, 3223, 234.2, 23.2, 54.2, "1234.2", "123.2")
-	cgo.EndWin()
+	ch := make(chan []interface{}, 0)
+	endChan := make(chan bool)
 
 	var isDebug bool
 	if args.Debug > 0 {
@@ -87,5 +83,27 @@ func main() {
 		return 
 	}
 
-	server.Run(args.ConcurrencyNum, args.RequestNum, request)
+
+	go func() {
+		cgo.StartWin()
+		cgo.PrintHeaderLine()
+		cgo.PrintHeader()
+		cgo.PrintDivider()
+		for{
+			select {
+			case <- ch:
+				cgo.PrintTd(234, 4234, 4223, 1, 3223, 234.2, 23.2, 54.2, "1234.2", "123.2")
+			case <- endChan:
+				goto endTag
+			}
+		}
+		endTag:
+		close(ch)
+		close(endChan)
+		cgo.EndWin()
+	}()
+	
+
+	server.Run(args.ConcurrencyNum, args.RequestNum, request, ch, endChan)
+	time.Sleep(2 * time.Second)
 }

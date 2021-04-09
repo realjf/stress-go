@@ -5,7 +5,7 @@ import (
 	"crypto/tls"
 	"io"
 	"time"
-	"log"
+	// "log"
 	"github.com/realjf/stress-go/helper"
 )
 
@@ -50,7 +50,7 @@ func HttpRequest(method, url string, body io.Reader, headers map[string]string, 
 	resp, err = client.Do(req)
 	requestTime = uint64(helper.DiffNano(startTime))
 	if err != nil {
-		log.Println("请求失败:", err)
+		// log.Println("请求失败:", err)
 
 		return
 	}
