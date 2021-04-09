@@ -46,8 +46,9 @@ void ReturnLine() {
     y = 0;
     refresh();
     wrefresh(scrwin);
-    if(x % lines == 0){
-        wscrl(scrwin, 1); // 滚动一屏
+    if(x > lines){
+        x--;
+        wscrl(scrwin, 1); // 滚动一行
     }
 }
 
