@@ -2,6 +2,7 @@
 #include "color.h"
 
 extern WINDOW *scrwin;
+extern WINDOW *boxwin;
 
 void StartColor() {
     /**
@@ -9,6 +10,7 @@ void StartColor() {
      */
     if (has_colors() == FALSE) {
         delwin(scrwin);
+        delwin(boxwin);
         endwin();
         printf("Your terminal does not support color\n");
         return;

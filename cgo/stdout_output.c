@@ -100,5 +100,6 @@ void EndWin() {
         exit(1);
     }
     delwin(scrwin);
+    delwin(boxwin);
     endwin();
 }
