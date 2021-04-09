@@ -42,14 +42,15 @@ void PrintField(char* field) {
 }
 
 void ReturnLine() {
-    x++;
     y = 0;
-    refresh();
-    wrefresh(scrwin);
     if(x > lines){
         x--;
         wscrl(scrwin, 1); // 滚动一行
+    }else{
+        x++;
     }
+    refresh();
+    wrefresh(scrwin);
 }
 
 void StartWin() {
