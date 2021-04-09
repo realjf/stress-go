@@ -120,7 +120,7 @@ func VDivider() *C.char {
 
 func PrintField(field string) {
 	// 设置颜色
-	var color FieldColor = Yellow
+	var color FieldColor = Red
 	switch color {
 	case Blue:
 		SetBlue()

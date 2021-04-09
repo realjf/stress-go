@@ -1,10 +1,10 @@
 package model
 
 import (
-	"strings"
-	"time"
 	"fmt"
 	"io"
+	"strings"
+	"time"
 )
 
 // 请求结果
@@ -22,7 +22,6 @@ func (r *Request) GetBody() (body io.Reader) {
 
 	return
 }
-
 
 func NewRequest(url string, timeout time.Duration, reqHeaders []string, reqBody string, debug bool) (request *Request, err error) {
 	// 解析url
@@ -44,15 +43,15 @@ func NewRequest(url string, timeout time.Duration, reqHeaders []string, reqBody 
 	}
 
 	request = &Request{
-		Url: url,
-		Method: method,
-		Body: body,
+		Url:     url,
+		Method:  method,
+		Body:    body,
 		Headers: headers,
 		Timeout: timeout,
-		Debug: debug,
+		Debug:   debug,
 	}
 
-	return 
+	return
 }
 
 func getHeaderValue(v string, headers map[string]string) {

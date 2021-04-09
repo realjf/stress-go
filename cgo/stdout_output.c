@@ -62,15 +62,21 @@ void StartWin() {
     setlocale(LC_CTYPE,"C-UTF-8");
     initscr();
     getmaxyx(stdscr, lines, cols);
-    my_win = newwin(lines-3,cols,0,0);
+    my_win = newwin(lines,cols,0,0);
+    refresh(); // 刷新屏幕内容
+    // box(my_win, 0, 0); // 盒子
+    // int tlc, trc, blc, brc;
+    // tlc = trc = blc = brc = 0;
+    // wborder(my_win, 0, 0, 0, 0, tlc, trc, blc, brc); // 盒子边界
+    scrollok(my_win, TRUE);
     scroll(my_win);
     x = y = 0;
     wrefresh(my_win);
     keypad(stdscr, TRUE); // 设置把收到的特殊键比如箭头,转化为ncurses定义的以KEY开头的数字宏
-    cbreak(); // 设置无buff模式，只有newline和return才会让getch返回
+    cbreak(); // 设置无缓冲模式，只有newline和return才会让getch返回
     noecho(); // 设置无回显模式
     StartColor();
-    clear();
+    clear(); // 清除窗口信息
 }
 
 void DrawTb(double requestTimeFloat,int concurrency,int successNum,int failureNum,double qps,
@@ -80,11 +86,12 @@ void DrawTb(double requestTimeFloat,int concurrency,int successNum,int failureNu
 }
 
 void EndWin() {
-    getch();
+    getch(); // 输入一个字符
     // restore termial setting
     if(tcsetattr(STDIN_FILENO,TCSANOW, &oldt) < 0) {
         perror("restore the termial setting");
         exit(1);
     }
+    delwin(my_win);
     endwin();
 }

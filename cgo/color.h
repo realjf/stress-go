@@ -9,6 +9,8 @@
 #define CYAN 6 // 青色
 #define MAGENTA 7 // 品红色
 #define WHITE 8
+#define DODGERBLUE 9 // 天蓝色
+
 
 // 开始颜色
 void StartColor();

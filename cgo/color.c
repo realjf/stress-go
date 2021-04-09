@@ -1,13 +1,14 @@
 #include "ncurses.h"
 #include "color.h"
 
-
+extern WINDOW *my_win;
 
 void StartColor() {
     /**
      * 初始化颜色
      */
     if (has_colors() == FALSE) {
+        delwin(my_win);
         endwin();
         printf("Your terminal does not support color\n");
         return;
@@ -21,60 +22,61 @@ void StartColor() {
     init_pair(CYAN, COLOR_CYAN, COLOR_BLACK);
     init_pair(MAGENTA, COLOR_MAGENTA, COLOR_BLACK);
     init_pair(WHITE, COLOR_WHITE, COLOR_BLACK);
+    // init_color(COLOR_BLUE, 30, 144, 255);
 }
 
 void SetBlue() {
-    attron(COLOR_PAIR(BLUE));
+    wattron(my_win, COLOR_PAIR(BLUE));
 }
 
 void SetRed() {
-    attron(COLOR_PAIR(RED));
+    wattron(my_win,COLOR_PAIR(RED));
 }
 
 void OffBlue() {
-    attroff(COLOR_PAIR(BLUE));
+    wattroff(my_win, COLOR_PAIR(BLUE));
 }
 
 void OffRed() {
-    attroff(COLOR_PAIR(RED));
+    wattroff(my_win, COLOR_PAIR(RED));
 }
 
 void SetGreen() {
-    attron(COLOR_PAIR(GREEN));
+    wattron(my_win, COLOR_PAIR(GREEN));
 }
 
 void OffGreen() {
-    attroff(COLOR_PAIR(GREEN));
+    wattroff(my_win, COLOR_PAIR(GREEN));
 }
 
 void SetYellow() {
-    attron(COLOR_PAIR(YELLOW));
+    wattron(my_win, COLOR_PAIR(YELLOW));
 }
 
 void OffYellow() {
-    attroff(COLOR_PAIR(YELLOW));
+    wattroff(my_win, COLOR_PAIR(YELLOW));
 }
 
 void SetCyan() {
-    attron(COLOR_PAIR(CYAN));
+    wattron(my_win, COLOR_PAIR(CYAN));
 }
 
 void OffCyan() {
-    attroff(COLOR_PAIR(CYAN));
+    wattroff(my_win, COLOR_PAIR(CYAN));
 }
 
 void SetMagenta() {
-    attron(COLOR_PAIR(MAGENTA));
+    wattron(my_win, COLOR_PAIR(MAGENTA));
 }
 
 void OffMagenta() {
-    attroff(COLOR_PAIR(MAGENTA));
+    wattroff(my_win, COLOR_PAIR(MAGENTA));
 }
 
 void SetWhite() {
-    attron(COLOR_PAIR(WHITE));
+    wattron(my_win,COLOR_PAIR(WHITE));
 }
 
 void OffWhite() {
-    attroff(COLOR_PAIR(WHITE));
+    wattroff(my_win, COLOR_PAIR(WHITE));
 }
