@@ -14,6 +14,7 @@ void PrintDivider();
 void PrintHeaderLine();
 void PrintHeader();
 void PrintVDivider();
+void ReturnLine();
 void PrintField(char* field);
 void DrawTb(double requestTimeFloat,int concurrency,int successNum,int failureNum,double qps,
 	double maxTimeFloat,double minTimeFloat,double avgTime, char* receivedBytesStr, char* speedStr);
@@ -26,6 +27,8 @@ extern char* Divider();
 extern char* HeaderLine();
 extern char* VDivider();
 extern char* Field();
+
+
 
 
 #endif

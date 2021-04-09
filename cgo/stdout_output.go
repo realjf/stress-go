@@ -36,14 +36,18 @@ func PrintDivider() {
 	OffWhite()
 }
 
+func ReturnLine() {
+	C.ReturnLine()
+}
+
 //export Divider
 func Divider() *C.char {
-	return C.CString(fmt.Sprintln("───────┼───────┼───────┼───────┼────────┼────────┼────────┼────────┼────────┼────────┼────────"))
+	return C.CString(fmt.Sprintln("─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────"))
 }
 
 //export HeaderLine
 func HeaderLine() *C.char {
-	return C.CString(fmt.Sprintln("───────┬───────┬───────┬───────┬────────┬────────┬────────┬────────┬────────┬────────┬────────"))
+	return C.CString(fmt.Sprintln("─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────"))
 }
 
 // 打印表头
@@ -72,6 +76,7 @@ func PrintHeader() {
 	PrintField(" 错误码")
 
 	PrintField("\n")
+	ReturnLine()
 }
 
 func PrintTd(requestTimeFloat float64, concurrency int, successNum int, failureNum int, qps float64,
@@ -99,6 +104,7 @@ func PrintTd(requestTimeFloat float64, concurrency int, successNum int, failureN
 	PrintField(" 错误码")
 
 	PrintField("\n")
+	ReturnLine()
 }
 
 func PrintVDivider() {

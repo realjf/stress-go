@@ -3,25 +3,49 @@
 #include "color.h"
 
 struct termios oldt;
+int lines, cols;
+WINDOW *my_win;
+int x, y;
 
 void PrintDivider() {
-    printw(Divider());
+    mvwprintw(my_win, x, y, Divider());
+    x++;
+    refresh();
+    wrefresh(my_win);
 }
 
 void PrintVDivider() {
-    printw(VDivider());
+    y += 1;
+    mvwprintw(my_win, x, y, VDivider());
+    y += 1;
 }
 
 void PrintHeaderLine() {
-    printw(HeaderLine());
+    mvwprintw(my_win, x, y, HeaderLine());
+    x++;
+    refresh();
+    wrefresh(my_win);
 }
 
 void PrintHeader() {
-   printw(DrawTh());
+   mvwprintw(my_win, x, y, DrawTh());
+   x++;
+   refresh();
+   wrefresh(my_win);
 }
 
 void PrintField(char* field) {
-    printw(field);
+   mvwprintw(my_win, x, y, field);
+   y += 8;
+   refresh();
+   wrefresh(my_win);
+}
+
+void ReturnLine() {
+    x++;
+    y = 0;
+    refresh();
+    wrefresh(my_win);
 }
 
 void StartWin() {
@@ -37,6 +61,11 @@ void StartWin() {
     setlocale(LC_ALL,"");
     setlocale(LC_CTYPE,"C-UTF-8");
     initscr();
+    getmaxyx(stdscr, lines, cols);
+    my_win = newwin(lines-3,cols,0,0);
+    scroll(my_win);
+    x = y = 0;
+    wrefresh(my_win);
     keypad(stdscr, TRUE); // 设置把收到的特殊键比如箭头,转化为ncurses定义的以KEY开头的数字宏
     cbreak(); // 设置无buff模式，只有newline和return才会让getch返回
     noecho(); // 设置无回显模式
@@ -46,7 +75,7 @@ void StartWin() {
 
 void DrawTb(double requestTimeFloat,int concurrency,int successNum,int failureNum,double qps,
 	double maxTimeFloat,double minTimeFloat,double avgTime, char* receivedBytesStr, char* speedStr) {
-    printw(DrawTd(requestTimeFloat, concurrency, successNum, failureNum, qps, maxTimeFloat, minTimeFloat, avgTime, receivedBytesStr, speedStr));
+    mvwprintw(my_win, x, y, DrawTd(requestTimeFloat, concurrency, successNum, failureNum, qps, maxTimeFloat, minTimeFloat, avgTime, receivedBytesStr, speedStr));
     refresh();
 }
 
