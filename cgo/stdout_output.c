@@ -45,6 +45,7 @@ void ReturnLine() {
     y = 0;
     x++;
     if(x >= lines){
+        wclear(scrwin);
         x = 1;
         wscrl(scrwin, 1); // 滚动一行
     }
@@ -70,7 +71,7 @@ void StartWin() {
     cbreak(); // 设置无缓冲模式，只有newline和return才会让getch返回
     noecho(); // 设置无回显模式
     nonl(); 
-    // clear(); // 清除窗口信息
+    clear(); // 清除窗口信息
     getmaxyx(stdscr, lines, cols);
     scrwin = newwin(lines-1,cols-1,1,1);
     // boxwin = newwin(lines, cols, 0, 0);
