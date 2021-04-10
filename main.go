@@ -3,12 +3,13 @@ package main
 import (
 	"flag"
 	"fmt"
-	"runtime"
 	"log"
+	"runtime"
 	"time"
-	"github.com/realjf/stress-go/server"
-	"github.com/realjf/stress-go/model"
+
 	"github.com/realjf/stress-go/cgo"
+	"github.com/realjf/stress-go/model"
+	"github.com/realjf/stress-go/server"
 )
 
 var (
@@ -73,37 +74,37 @@ func main() {
 	var isDebug bool
 	if args.Debug > 0 {
 		isDebug = true
-	}else{
+	} else {
 		isDebug = false
 	}
 
-	request, err := model.NewRequest(args.Url, time.Second * 30, args.Headers, args.Body, isDebug)
+	request, err := model.NewRequest(args.Url, time.Second*30, args.Headers, args.Body, isDebug)
 	if err != nil {
 		log.Println(err)
-		return 
+		return
 	}
-
 
 	go func() {
 		cgo.StartWin()
 		cgo.PrintHeaderLine()
 		cgo.PrintHeader()
 		cgo.PrintDivider()
-		for{
+		var i int = 0
+		for {
 			select {
-			case <- ch:
-				cgo.PrintTd(234, 4234, 4223, 1, 3223, 234.2, 23.2, 54.2, "1234.2", "123.2")
-			case <- endChan:
+			case <-ch:
+				i++
+				cgo.PrintTd(234, 4234, 4223, i, 3223, 234.2, 23.2, 54.2, "1234.2", "123.2")
+			case <-endChan:
 				goto endTag
 			}
 		}
-		endTag:
+	endTag:
 		close(ch)
 		close(endChan)
 		cgo.EndWin()
 	}()
-	
 
 	server.Run(args.ConcurrencyNum, args.RequestNum, request, ch, endChan)
-	time.Sleep(2 * time.Second)
+	time.Sleep(3 * time.Second)
 }

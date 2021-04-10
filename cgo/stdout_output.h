@@ -7,6 +7,7 @@
 #include <termios.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <signal.h>
 
 void StartWin();
 void EndWin();
@@ -29,6 +30,6 @@ extern char* VDivider();
 extern char* Field();
 
 
-
+static void finish(int sig);
 
 #endif

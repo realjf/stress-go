@@ -43,9 +43,8 @@ void PrintField(char* field) {
 
 void ReturnLine() {
     y = 0;
-    if(x > lines){
-        x--;
-        wscrl(scrwin, 1); // 滚动一行
+    if(x >= lines){
+        // wscrl(scrwin, 1); // 滚动一行
     }else{
         x++;
     }
@@ -65,12 +64,14 @@ void StartWin() {
     }
     setlocale(LC_ALL,"");
     setlocale(LC_CTYPE,"C-UTF-8");
+    (void)signal(SIGINT, finish);
     initscr();
     cbreak(); // 设置无缓冲模式，只有newline和return才会让getch返回
     noecho(); // 设置无回显模式
     nonl(); 
+    // clear(); // 清除窗口信息
     getmaxyx(stdscr, lines, cols);
-    scrwin = newwin(lines-2,cols-2,2,2);
+    scrwin = newwin(lines-1,cols-1,1,1);
     boxwin = newwin(lines, cols, 0, 0);
     scrollok(scrwin, TRUE); // 开启视窗卷动功能
     keypad(scrwin, TRUE); // 设置把收到的特殊键比如箭头,转化为ncurses定义的以KEY开头的数字宏
@@ -85,7 +86,7 @@ void StartWin() {
     // scroll(scrwin);
     x = y = 0;
     StartColor();
-    clear(); // 清除窗口信息
+    
 }
 
 void DrawTb(double requestTimeFloat,int concurrency,int successNum,int failureNum,double qps,
@@ -104,4 +105,11 @@ void EndWin() {
     delwin(scrwin);
     delwin(boxwin);
     endwin();
+}
+
+static void finish(int sig) {
+    delwin(scrwin);
+    delwin(boxwin);
+    endwin();
+    exit(0);
 }
