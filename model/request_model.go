@@ -71,3 +71,11 @@ func getHeaderValue(v string, headers map[string]string) {
 		}
 	}
 }
+
+// 请求结果
+type RequestResults struct {
+	Time          uint64 // 请求时间 纳秒
+	IsSucceed     bool   // 是否请求成功
+	ErrCode       int    // 错误码
+	ReceivedBytes int64
+}

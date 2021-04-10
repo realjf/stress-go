@@ -68,7 +68,7 @@ func main() {
 		return
 	}
 
-	ch := make(chan []interface{}, 0)
+	ch := make(chan *model.RequestResults, 1000)
 	endChan := make(chan bool)
 
 	var isDebug bool
