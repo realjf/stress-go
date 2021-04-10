@@ -43,13 +43,14 @@ void PrintField(char* field) {
 
 void ReturnLine() {
     y = 0;
+    x++;
     if(x >= lines){
-        // wscrl(scrwin, 1); // 滚动一行
-    }else{
-        x++;
+        x = 1;
+        wscrl(scrwin, 1); // 滚动一行
     }
     refresh();
     wrefresh(scrwin);
+    usleep(30000);
 }
 
 void StartWin() {
@@ -72,13 +73,13 @@ void StartWin() {
     // clear(); // 清除窗口信息
     getmaxyx(stdscr, lines, cols);
     scrwin = newwin(lines-1,cols-1,1,1);
-    boxwin = newwin(lines, cols, 0, 0);
+    // boxwin = newwin(lines, cols, 0, 0);
     scrollok(scrwin, TRUE); // 开启视窗卷动功能
     keypad(scrwin, TRUE); // 设置把收到的特殊键比如箭头,转化为ncurses定义的以KEY开头的数字宏
     
-    box(boxwin, '|', '-'); // 盒子
+    // box(boxwin, '|', '-'); // 盒子
     refresh(); // 刷新屏幕内容
-    wrefresh(boxwin);
+    // wrefresh(boxwin);
     // int tlc, trc, blc, brc;
     // tlc = trc = blc = brc = 0;
     // wborder(scrwin, 0, 0, 0, 0, tlc, trc, blc, brc); // 盒子边界
@@ -86,7 +87,7 @@ void StartWin() {
     // scroll(scrwin);
     x = y = 0;
     StartColor();
-    
+
 }
 
 void DrawTb(double requestTimeFloat,int concurrency,int successNum,int failureNum,double qps,
