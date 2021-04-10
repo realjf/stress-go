@@ -79,7 +79,7 @@ func PrintHeader() {
 	ReturnLine()
 }
 
-func PrintTd(requestTimeFloat float64, concurrency int, successNum int, failureNum int, qps float64,
+func PrintTd(requestTimeFloat float64, concurrency uint64, successNum uint64, failureNum uint64, qps float64,
 	maxTimeFloat float64, minTimeFloat float64, avgTime float64, receivedBytesStr string, speedStr string) {
 	PrintField(fmt.Sprintf("%4.2fs", requestTimeFloat))
 	PrintVDivider()
