@@ -73,7 +73,7 @@ void StartWin() {
     nonl(); 
     clear(); // 清除窗口信息
     getmaxyx(stdscr, lines, cols);
-    scrwin = newwin(lines-1,cols-1,1,1);
+    scrwin = newwin(lines,cols,0,0);
     // boxwin = newwin(lines, cols, 0, 0);
     scrollok(scrwin, TRUE); // 开启视窗卷动功能
     keypad(scrwin, TRUE); // 设置把收到的特殊键比如箭头,转化为ncurses定义的以KEY开头的数字宏
