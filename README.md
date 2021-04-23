@@ -7,6 +7,11 @@
 |---- main.go // main主函数
 |---- cgo
 |      |---- stdout_output.go
+|      |---- stdout_output.c
+|      |---- stdout_output.h
+|      |---- color.go
+|      |---- color.c
+|      |---- color.h
 |---- server
 |       |---- server.go // 压测启动，注册验证器、启动统计函数、启动协程进行压测
 |       |---- golink
@@ -36,3 +41,4 @@ Usage:
 ```
 
 ![stress-go-result](stress-go-result.png)
+
