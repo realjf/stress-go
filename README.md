@@ -22,7 +22,7 @@
 |      |---- helper.go
 |---- model
 |      |---- request_model.go // 请求数据模型
-|      |---- curl_model.go
+
 
 
 ```
