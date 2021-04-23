@@ -20,10 +20,6 @@ func EndWin() {
 	C.EndWin()
 }
 
-func DrawTableLine() {
-	C.DrawTb(C.double(132.2), C.int(4134), C.int(323), C.int(433), C.double(1334), C.double(43.23), C.double(3.2), C.double(32.2), C.CString("4342"), C.CString("2343"))
-}
-
 func PrintHeaderLine() {
 	SetWhite()
 	C.PrintHeaderLine()
@@ -31,6 +27,7 @@ func PrintHeaderLine() {
 }
 
 func PrintDivider() {
+	C.ReturnLine()
 	SetWhite()
 	C.PrintDivider()
 	OffWhite()
@@ -76,11 +73,14 @@ func PrintHeader() {
 	PrintField(" 错误码")
 
 	PrintField("\n")
-	ReturnLine()
+	// ReturnLine()
 }
 
 func PrintTd(requestTimeFloat float64, concurrency uint64, successNum uint64, failureNum uint64, qps float64,
 	maxTimeFloat float64, minTimeFloat float64, avgTime float64, receivedBytesStr string, speedStr string) {
+
+	ReturnLine()
+
 	PrintField(fmt.Sprintf("%4.2fs", requestTimeFloat))
 	PrintVDivider()
 	PrintField(fmt.Sprintf("%7d", concurrency))
@@ -104,7 +104,7 @@ func PrintTd(requestTimeFloat float64, concurrency uint64, successNum uint64, fa
 	PrintField(" 错误码")
 
 	PrintField("\n")
-	ReturnLine()
+	// ReturnLine()
 }
 
 func PrintVDivider() {
