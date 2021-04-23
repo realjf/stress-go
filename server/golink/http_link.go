@@ -1,6 +1,7 @@
 package golink
 
 import (
+	"net/http"
 	"sync"
 
 	"github.com/realjf/stress-go/model"
@@ -15,7 +16,6 @@ func Send(request *model.Request, requestNum uint64, wg sync.WaitGroup, ch chan<
 	}()
 
 	var (
-		// startTime = time.Now()
 		isSucceed     = false
 		errCode       = 0
 		contentLength = int64(0)
@@ -23,20 +23,19 @@ func Send(request *model.Request, requestNum uint64, wg sync.WaitGroup, ch chan<
 	)
 
 	newRequest := request
-	// newRequest := request
 
 	var i uint64
 	for i = 0; i < requestNum; i++ {
 		resp, reqTime, err := client.HttpRequest(newRequest.Method, newRequest.Url, newRequest.GetBody(), newRequest.Headers, newRequest.Timeout)
-		// requestTime := uint64(heper.DiffNano(startTime))
 		if err != nil {
 			errCode = 1 // 请求错误
 		} else {
 			contentLength += resp.ContentLength
 
 			// 验证请求是否成功
-			// errCode, isSucceed = newRequest.GetVerifyHttp()(newRequest, resp)
-			isSucceed = true
+			if resp.StatusCode == http.StatusOK {
+				isSucceed = true
+			}
 		}
 
 		requestTime = requestTime + reqTime

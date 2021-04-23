@@ -188,5 +188,4 @@ func main() {
 	}(args.ConcurrencyNum)
 
 	server.Run(args.ConcurrencyNum, args.RequestNum, request, ch, endChan)
-	time.Sleep(3 * time.Second)
 }

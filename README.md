@@ -8,18 +8,11 @@
 |---- cgo
 |      |---- stdout_output.go
 |---- server
-|       |---- dispose.go // 压测启动，注册验证器、启动统计函数、启动协程进行压测
-|       |---- statistics 
-|       |         |---- statistics.go // 接收压测统计结果
+|       |---- server.go // 压测启动，注册验证器、启动统计函数、启动协程进行压测
 |       |---- golink
 |       |       |---- http_link.go
-|       |       |---- websocket_link.go
 |       |---- client
 |       |       |---- http_client.go
-|       |       |---- websocket_client.go
-|       |---- verify
-|               |---- http_verify.go
-|               |---- websocket_verify.go
 |---- helper
 |      |---- helper.go
 |---- model

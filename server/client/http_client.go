@@ -1,11 +1,12 @@
 package client
 
 import (
-	"net/http"
 	"crypto/tls"
 	"io"
+	"log"
+	"net/http"
 	"time"
-	// "log"
+
 	"github.com/realjf/stress-go/helper"
 )
 
@@ -23,7 +24,7 @@ func NewHttpClient(timeout time.Duration) *http.Client {
 	return client
 }
 
-func HttpRequest(method, url string, body io.Reader, headers map[string]string, timeout time.Duration) (resp *http.Response, requestTime uint64,err error) {
+func HttpRequest(method, url string, body io.Reader, headers map[string]string, timeout time.Duration) (resp *http.Response, requestTime uint64, err error) {
 	client := NewHttpClient(timeout)
 	req, err := http.NewRequest(method, url, body)
 	if err != nil {
@@ -50,7 +51,7 @@ func HttpRequest(method, url string, body io.Reader, headers map[string]string, 
 	resp, err = client.Do(req)
 	requestTime = uint64(helper.DiffNano(startTime))
 	if err != nil {
-		// log.Println("请求失败:", err)
+		log.Println("请求失败:", err)
 
 		return
 	}
