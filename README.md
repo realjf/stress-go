@@ -35,3 +35,4 @@ Usage:
     -H value 自定义头信息传递给服务器 示例： -header 'Content-Type: application/json' -H 'referer: https://realjf.io'
 ```
 
+![stress-go-result](stress-go-result.png)
