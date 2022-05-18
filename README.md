@@ -1,5 +1,5 @@
 # stress-go
- a stress testing tool（压测工具）
+a stress testing tool（压测工具）
 
 ### 目录结构
 
