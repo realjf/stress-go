@@ -1,5 +1,5 @@
-module github.com/realjf/stress-go
+module stress-go
 
-go 1.14
+go 1.18
 
-require github.com/realjf/gopool v0.1.0
+require github.com/realjf/stress-go v1.0.0

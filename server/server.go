@@ -10,7 +10,7 @@ import (
 // 运行压测
 func Run(concurrency, totalNumber uint64, request *model.Request, ch chan<- *model.RequestResults, endChan chan bool) {
 
-	wg := sync.WaitGroup{}
+	wg := &sync.WaitGroup{}
 
 	var i uint64
 	for i = 0; i < concurrency; i++ {

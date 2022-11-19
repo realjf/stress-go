@@ -13,7 +13,8 @@ import (
 )
 
 var (
-	args Args // 请求参数
+	args    Args   // 请求参数
+	Version string // 版本号
 )
 
 type Array []string
@@ -185,6 +186,7 @@ func main() {
 		close(ch)
 		close(endChan)
 		cgo.EndWin()
+		cgo.FinishWin()
 	}(args.ConcurrencyNum)
 
 	server.Run(args.ConcurrencyNum, args.RequestNum, request, ch, endChan)

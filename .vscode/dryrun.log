@@ -1,6 +1,0 @@
-make --dry-run --always-make --keep-going --print-directory
-make: Entering directory '/home/realjf/go/src/stress-go'
-echo 'building...'
-env CGO_ENABLED=1 GOOS=linux GOARCH=amd64 go build -ldflags '-s -w' -gcflags="all=-trimpath=/home/realjf/go/src/stress-go" -asmflags="all=-trimpath=/home/realjf/go/src/stress-go" -o  battle/api/battle.go
-make: Leaving directory '/home/realjf/go/src/stress-go'
- 
