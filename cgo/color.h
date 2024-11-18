@@ -1,5 +1,5 @@
-#ifndef COLOR_H__
-#define COLOR_H__
+#ifndef __COLOR_H__
+#define __COLOR_H__
 
 #define BLACK 1
 #define RED 2
@@ -30,4 +30,4 @@ void OffMagenta();
 void SetWhite();
 void OffWhite();
 
-#endif
+#endif    /* __COLOR_H__ */

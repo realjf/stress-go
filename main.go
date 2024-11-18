@@ -186,7 +186,6 @@ func main() {
 		close(ch)
 		close(endChan)
 		cgo.EndWin()
-		cgo.FinishWin()
 	}(args.ConcurrencyNum)
 
 	server.Run(args.ConcurrencyNum, args.RequestNum, request, ch, endChan)

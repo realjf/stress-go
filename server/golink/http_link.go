@@ -9,7 +9,7 @@ import (
 )
 
 // send 发送一次请求
-func Send(request *model.Request, requestNum uint64, wg sync.WaitGroup, ch chan<- *model.RequestResults) {
+func Send(request *model.Request, requestNum uint64, wg *sync.WaitGroup, ch chan<- *model.RequestResults) {
 
 	defer func() {
 		wg.Done()
