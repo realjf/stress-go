@@ -61,7 +61,7 @@ func main() {
 	flag.StringVar(&args.Url, "u", "", "压测地址")
 	flag.StringVar(&args.Path, "p", "", "cURL文件路径")
 	flag.Var(&args.Headers, "H", "自定义头部信息，如：-H 'Content-Type: application/json'")
-	flag.StringVar(&args.Body, "td", "", "http post数据")
+	flag.StringVar(&args.Body, "b", "", "http post数据")
 	flag.Parse()
 
 	if args.Url == "" || args.ConcurrencyNum == 0 || args.RequestNum == 0 {
