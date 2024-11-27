@@ -4,7 +4,7 @@
 // # Created Date: 2024/11/27 13:37:48                                         #
 // # Author: realjf                                                            #
 // # -----                                                                     #
-// # Last Modified: 2024/11/27 17:48:59                                        #
+// # Last Modified: 2024/11/27 20:51:56                                        #
 // # Modified By: realjf                                                       #
 // # -----                                                                     #
 // #                                                                           #
@@ -46,4 +46,4 @@
 // 未实现这个属性
 // #define ATTR_VERTICAL A_VERTICAL
 
-#endif /* __TEXT_ATTRIBUTES_H__ */
+#endif    /* __TEXT_ATTRIBUTES_H__ */

@@ -4,7 +4,7 @@
 // # Created Date: 2024/11/27 15:05:38                                         #
 // # Author: realjf                                                            #
 // # -----                                                                     #
-// # Last Modified: 2024/11/27 18:31:40                                        #
+// # Last Modified: 2024/11/27 20:57:24                                        #
 // # Modified By: realjf                                                       #
 // # -----                                                                     #
 // #                                                                           #
@@ -38,12 +38,18 @@
 // #define COLOUR_XXX 8
 //...
 
+//======================================标准窗口============================================
+
+//======================================自定义窗口============================================
+
+//======================================通用============================================
 // 判断终端是否支持颜色文本
 bool is_supported_colors();
 // 开启终端颜色支持
 bool enable_color();
 // 确认终端是否支持修改颜色属性能力（新增颜色等）
 bool is_color_can_change();
+
 // 设置新颜色
 bool new_color(short new_color_number, short r, short g, short b);
 
@@ -51,4 +57,4 @@ bool new_color(short new_color_number, short r, short g, short b);
 // pair的值可以自定义
 bool new_color_pair(short pair, short f, short b);
 
-#endif    /* __TEXT_COLOR_H__ */
+#endif /* __TEXT_COLOR_H__ */

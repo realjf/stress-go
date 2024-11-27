@@ -4,7 +4,7 @@
 // # Created Date: 2024/11/27 11:02:02                                         #
 // # Author: realjf                                                            #
 // # -----                                                                     #
-// # Last Modified: 2024/11/27 18:50:15                                        #
+// # Last Modified: 2024/11/27 20:53:16                                        #
 // # Modified By: realjf                                                       #
 // # -----                                                                     #
 // #                                                                           #
@@ -13,25 +13,25 @@
 #include "control.h"
 
 //======================================标准窗口============================================
-bool flush() { return refresh() == OK; }
+bool std_flush() { return refresh() == OK; }
 
-void move_cursor(int x, int y) { move(y, x); }
+void std_move_cursor(int x, int y) { move(y, x); }
 
-bool insert_ch_at(char ch) { return insch(ch) == OK; }
+bool std_insert_ch_at(char ch) { return insch(ch) == OK; }
 // 在光标处插入一行空白行，剩余部分往下滚动一行
-bool insert_line() { return insertln() == OK; }
+bool std_insert_line() { return insertln() == OK; }
 
 // 删除一个字符
-bool delete_ch() { return delch() == OK; }
+bool std_delete_ch() { return delch() == OK; }
 // 删除一行
-bool delete_line() { return deleteln() == OK; }
+bool std_delete_line() { return deleteln() == OK; }
 
-bool clear_all() { return clear() == OK && flush(); }
-bool erase_all() { return erase() == OK && flush(); }
+bool std_clear_all() { return clear() == OK && flush(); }
+bool std_erase_all() { return erase() == OK && flush(); }
 // 清空光标后到屏幕底部所有内容
-bool clear_to_bottom() { return clrtobot() == OK && flush(); }
+bool std_clear_to_bottom() { return clrtobot() == OK && flush(); }
 // 清空光标后到行尾处所有内容
-bool clear_to_eol() { return clrtoeol() == OK && flush(); }
+bool std_clear_to_eol() { return clrtoeol() == OK && flush(); }
 
 //======================================自定义窗口============================================
 

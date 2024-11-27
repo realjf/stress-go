@@ -4,7 +4,7 @@
 // # Created Date: 2024/11/27 10:44:12                                         #
 // # Author: realjf                                                            #
 // # -----                                                                     #
-// # Last Modified: 2024/11/27 18:51:57                                        #
+// # Last Modified: 2024/11/27 20:51:19                                        #
 // # Modified By: realjf                                                       #
 // # -----                                                                     #
 // #                                                                           #
@@ -20,16 +20,16 @@
 //======================================标准窗口输出============================================
 
 /* 输出字符 */
-void echo(char ch);
+void std_echo(char ch);
 // 输出字符串
-void echo_str(char *str);
+void std_echo_str(char *str);
 // 格式化输出
-void echo_fmt(char *format, ...);
+void std_echo_fmt(char *format, ...);
 
 // 在屏幕指定位置输出
-void echo_at(int y, int x, char ch);
-void echo_str_at(int y, int x, char *str);
-void echo_fmt_at(int y, int x, char *format, ...);
+void std_echo_at(int y, int x, char ch);
+void std_echo_str_at(int y, int x, char *str);
+void std_echo_fmt_at(int y, int x, char *format, ...);
 
 //======================================自定义窗口输出============================================
 void w_echo(const WINDOW *win, char ch);

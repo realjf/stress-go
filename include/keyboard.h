@@ -4,7 +4,7 @@
 // # Created Date: 2024/11/27 17:08:05                                         #
 // # Author: realjf                                                            #
 // # -----                                                                     #
-// # Last Modified: 2024/11/27 18:48:30                                        #
+// # Last Modified: 2024/11/27 21:04:06                                        #
 // # Modified By: realjf                                                       #
 // # -----                                                                     #
 // #                                                                           #
@@ -20,13 +20,13 @@
 
 //======================================标准窗口============================================
 // 从输入中读取一个字符
-char get_ch();
+char std_get_ch();
 // 从输入中读取字符串
-int get_str(char *str);
+int std_get_str(char *str);
 // 从输入中读取指定字符串
-int get_nstr(char *str, int length);
+int std_get_nstr(char *str, int length);
 // 从输入中读取指定格式数据
-int scan_w(char *format, ...);
+int std_scan_w(char *format, ...);
 
 //======================================自定义窗口============================================
 // 从输入中读取一个字符
@@ -57,5 +57,7 @@ bool disable_delay(const WINDOW *win);
 // 如果需要读取特殊的键盘输入值，可以通过以下方法启用或关闭，通过getch获取键盘输入值
 bool enable_keypad(const WINDOW *win);
 bool disable_keypad(const WINDOW *win);
+
+bool has_keyboard();
 
 #endif /* __KEYBOARD_H__ */

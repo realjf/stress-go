@@ -4,7 +4,7 @@
 // # Created Date: 2024/11/27 10:54:30                                         #
 // # Author: realjf                                                            #
 // # -----                                                                     #
-// # Last Modified: 2024/11/27 18:52:05                                        #
+// # Last Modified: 2024/11/27 20:51:39                                        #
 // # Modified By: realjf                                                       #
 // # -----                                                                     #
 // #                                                                           #
@@ -13,17 +13,17 @@
 #include "text_output.h"
 
 //======================================标准窗口输出============================================
-void echo(char ch) {
+void std_echo(char ch) {
   // 输出字符
   addch(ch);
 }
 
-void echo_str(char *str) {
+void std_echo_str(char *str) {
   // 输出字符串
   addstr(str);
 }
 
-void echo_fmt(char *format, ...) {
+void std_echo_fmt(char *format, ...) {
   // 定义va_list变量
   va_list args;
   // 初始化args
@@ -32,11 +32,11 @@ void echo_fmt(char *format, ...) {
   va_end(args);
 }
 
-void echo_at(int y, int x, char ch) { mvaddch(y, x, ch); }
+void std_echo_at(int y, int x, char ch) { mvaddch(y, x, ch); }
 
-void echo_str_at(int y, int x, char *str) { mvaddstr(y, x, str); }
+void std_echo_str_at(int y, int x, char *str) { mvaddstr(y, x, str); }
 
-void echo_fmt_at(int y, int x, char *format, ...) {
+void std_echo_fmt_at(int y, int x, char *format, ...) {
   // 定义va_list变量
   va_list args;
   // 初始化args

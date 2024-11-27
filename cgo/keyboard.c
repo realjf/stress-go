@@ -4,7 +4,7 @@
 // # Created Date: 2024/11/27 17:09:07                                         #
 // # Author: realjf                                                            #
 // # -----                                                                     #
-// # Last Modified: 2024/11/27 18:50:35                                        #
+// # Last Modified: 2024/11/27 21:05:52                                        #
 // # Modified By: realjf                                                       #
 // # -----                                                                     #
 // #                                                                           #
@@ -13,16 +13,16 @@
 #include "keyboard.h"
 
 //======================================标准窗口============================================
-char get_ch() {
+char std_get_ch() {
   // 如果getch报错，可以通过getch() == ERR进行判断
   return getch();
 }
 
-int get_str(char *str) { return getstr(str); }
+int std_get_str(char *str) { return getstr(str); }
 
-int get_nstr(char *str, int length) { return getnstr(str, length); }
+int std_get_nstr(char *str, int length) { return getnstr(str, length); }
 
-int scan_w(char *format, ...) {
+int std_scan_w(char *format, ...) {
   va_list args;
   va_start(args, format);
   int c = scanw(format, args);
@@ -65,3 +65,5 @@ bool disable_delay(const WINDOW *win) { return nodelay(win, FALSE) == OK; }
 // 如果需要读取特殊的键盘输入值，可以通过以下方法启用或关闭，通过getch获取键盘输入值
 bool enable_keypad(const WINDOW *win) { return keypad(win, TRUE) == OK; }
 bool disable_keypad(const WINDOW *win) { return keypad(win, FALSE) == OK; }
+
+bool has_key(int keycode) { return has_key(keycode); }
