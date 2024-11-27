@@ -63,6 +63,7 @@ func SetCyan() {
 func OffCyan() {
 	C.OffCyan()
 }
+
 // 品红色
 func SetMagenta() {
 	C.SetMagenta()

@@ -42,3 +42,29 @@ Usage:
 
 ![stress-go-result](./stress-go-result.png)
 
+
+
+### ncurses
+
+```shell
+# 核心库
+libncurses.a (正常)
+libncurses.so (共享)
+libncurses_g.a (启用调试和跟踪代码)
+libncurses_p.a (已启用性能分析)
+
+# 面板
+libpanel.a
+libpanel.so
+
+# 菜单
+libmenu.a
+libmenu.so
+
+# 表单
+libform.a
+libform.so
+
+# 使用 --enable-widec 进行编译时，库名称后面加w，如ncursesw.a，标识支持宽字符
+
+```

@@ -36,4 +36,4 @@ extern char *Field();
 
 static void finish(int sig);
 
-#endif /* __STDOUT_OUTPUT_H__ */
+#endif    /* __STDOUT_OUTPUT_H__ */

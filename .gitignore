@@ -16,4 +16,6 @@
 
 bin
 .history
-.vscode
+
+deps/
+lib/

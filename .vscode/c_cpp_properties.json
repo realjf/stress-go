@@ -1,0 +1,16 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${default}",
+                "${workspaceFolder}/deps/ncurses-6.5/include",
+                "${workspaceFolder}/include",
+                "${workspaceFolder}/cgo"
+            ],
+            "defines": [ ],
+            "compilerPath": "/usr/bin/clang"
+        }
+    ],
+    "version": 4
+}
