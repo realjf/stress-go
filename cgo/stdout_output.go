@@ -38,12 +38,12 @@ func ReturnLine() {
 }
 
 //export Divider
-func Divider() *C.char {
+func Divider() *C.uint32_t {
 	return C.CString(fmt.Sprintln("─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────"))
 }
 
 //export HeaderLine
-func HeaderLine() *C.char {
+func HeaderLine() *C.uint32_t {
 	return C.CString(fmt.Sprintln("─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────"))
 }
 
@@ -114,7 +114,7 @@ func PrintVDivider() {
 }
 
 //export VDivider
-func VDivider() *C.char {
+func VDivider() *C.uint32_t {
 	return C.CString(fmt.Sprint("│"))
 }
 
@@ -156,12 +156,12 @@ func PrintField(field string) {
 	}
 }
 
-func Field(field string) *C.char {
+func Field(field string) *C.uint32_t {
 	return C.CString(field)
 }
 
 //export DrawTh
-func DrawTh() *C.char {
+func DrawTh() *C.uint32_t {
 	// 打印的时长都为毫秒 总请数
 	th := fmt.Sprintf(" 耗时│ 并发数│ 成功数│ 失败数│   qps  │最长耗时│最短耗时│平均耗时│下载字节│字节每秒│ 错误码")
 	th += fmt.Sprintln()
@@ -173,7 +173,7 @@ func DrawTh() *C.char {
 
 //export DrawTd
 func DrawTd(requestTimeFloat C.double, concurrency C.int, successNum C.int, failureNum C.int, qps C.double,
-	maxTimeFloat C.double, minTimeFloat C.double, avgTime C.double, receivedBytesStr *C.char, speedStr *C.char) *C.char {
+	maxTimeFloat C.double, minTimeFloat C.double, avgTime C.double, receivedBytesStr *C.char, speedStr *C.char) *C.uint32_t {
 	// 打印的时长都为毫秒
 	td := fmt.Sprintf("%4.0fs│%7d│%7d│%7d│%8.2f│%8.2f│%8.2f│%8.2f│%8s│%8s│%v",
 		requestTimeFloat, concurrency, successNum, failureNum, qps, maxTimeFloat, minTimeFloat, avgTime,

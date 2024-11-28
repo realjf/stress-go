@@ -4,7 +4,7 @@
 // # Created Date: 2024/11/27 10:15:54                                         #
 // # Author: realjf                                                            #
 // # -----                                                                     #
-// # Last Modified: 2024/11/27 22:54:31                                        #
+// # Last Modified: 2024/11/28 22:05:10                                        #
 // # Modified By: realjf                                                       #
 // # -----                                                                     #
 // #                                                                           #
@@ -25,11 +25,22 @@ bool std_set_bg_color(int color);
 // 滚动n行
 bool std_scroll_n_line(int n);
 
+// 画边框
+// left,right,top,bottom 边线
+// uleft,uright,lleft,lright 角
+bool std_draw_border(uint32_t left, uint32_t right, uint32_t top,
+                     uint32_t bottom, uint32_t uleft, uint32_t uright,
+                     uint32_t lleft, uint32_t lright);
+
 //======================================自定义窗口============================================
 
 bool w_set_bg_color(const WINDOW *win, int color);
 // 滚动n行
 bool w_scroll_n_line(const WINDOW *win, int n);
+
+bool w_draw_border(const WINDOW *win, uint32_t left, uint32_t right,
+                   uint32_t top, uint32_t bottom, uint32_t uleft,
+                   uint32_t uright, uint32_t lleft, uint32_t lright);
 
 //======================================通用============================================
 
@@ -78,5 +89,6 @@ bool scroll_a_line(const WINDOW *win);
 
 // 移动窗口
 bool move_win(const WINDOW *win, int x, int y);
+
 
 #endif /* __WINDOW_H__ */

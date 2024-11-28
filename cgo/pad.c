@@ -4,7 +4,7 @@
 // # Created Date: 2024/11/27 22:37:45                                         #
 // # Author: realjf                                                            #
 // # -----                                                                     #
-// # Last Modified: 2024/11/27 23:09:45                                        #
+// # Last Modified: 2024/11/28 22:01:17                                        #
 // # Modified By: realjf                                                       #
 // # -----                                                                     #
 // #                                                                           #
@@ -28,7 +28,7 @@ bool std_nout_pad(const WINDOW *pad, int pad_x, int pad_y, int scr_x, int scr_y,
 bool std_update_pad() { return doupdate() == OK; }
 
 // 输出字符
-bool std_pad_echo_ch(const WINDOW *pad, char ch) {
+bool std_pad_echo_ch(const WINDOW *pad, uint32_t ch) {
   return pechochar(pad, ch) == OK;
 }
 

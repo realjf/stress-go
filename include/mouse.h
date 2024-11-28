@@ -4,7 +4,7 @@
 // # Created Date: 2024/11/28 09:50:09                                         #
 // # Author: realjf                                                            #
 // # -----                                                                     #
-// # Last Modified: 2024/11/28 11:06:22                                        #
+// # Last Modified: 2024/11/28 22:02:07                                        #
 // # Modified By: realjf                                                       #
 // # -----                                                                     #
 // #                                                                           #
@@ -45,7 +45,7 @@
 //======================================通用============================================
 // 启用后，可以通过getch()获取输入，如果为EVENT_MOUSE事件，则可以通过get_mouse_event获取鼠标事件内容
 uint32_t enable_mouse_capture(uint32_t mouse_event_mask,
-                              uint32_t *old_mouse_event_mask);
+                              char *old_mouse_event_mask);
 
 bool get_mouse_event(MEVENT *event);
 

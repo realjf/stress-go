@@ -4,7 +4,7 @@
 // # Created Date: 2024/11/27 11:01:12                                         #
 // # Author: realjf                                                            #
 // # -----                                                                     #
-// # Last Modified: 2024/11/27 20:52:53                                        #
+// # Last Modified: 2024/11/28 22:01:17                                        #
 // # Modified By: realjf                                                       #
 // # -----                                                                     #
 // #                                                                           #
@@ -23,7 +23,7 @@ bool std_flush();
 void std_move_cursor(int x, int y);
 
 // 在光标后插入一个字符
-bool std_insert_ch_at(char ch);
+bool std_insert_ch_at(uint32_t ch);
 // 在光标处插入一行空白行，剩余部分往下滚动一行
 bool std_insert_line();
 // 删除光标后一个字符
@@ -45,7 +45,7 @@ bool std_clear_to_eol();
 bool w_flush(const WINDOW *win);
 void w_move_cursor(const WINDOW *win, int x, int y);
 // 在光标后插入一个字符
-bool w_insert_ch_at(const WINDOW *win, char ch);
+bool w_insert_ch_at(const WINDOW *win, uint32_t ch);
 // 在光标处插入一行空白行，剩余部分往下滚动一行
 bool w_insert_line(const WINDOW *win);
 // 删除光标后一个字符
@@ -67,5 +67,8 @@ bool w_clear_to_eol(const WINDOW *win);
 void pause_ms(int ms);
 // 获取光标位置，屏幕左上角为0,0
 bool get_cursor_pos(const WINDOW *win, int x, int y);
+// 设置光标状态
+// 0-不可见模式，1-正常模式，2-非常明显模式
+bool set_cursor_mode(int n);
 
 #endif /* __CONTROL_H__ */

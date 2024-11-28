@@ -4,7 +4,7 @@
 // # Created Date: 2024/11/27 11:02:02                                         #
 // # Author: realjf                                                            #
 // # -----                                                                     #
-// # Last Modified: 2024/11/27 20:53:16                                        #
+// # Last Modified: 2024/11/28 22:01:17                                        #
 // # Modified By: realjf                                                       #
 // # -----                                                                     #
 // #                                                                           #
@@ -17,7 +17,7 @@ bool std_flush() { return refresh() == OK; }
 
 void std_move_cursor(int x, int y) { move(y, x); }
 
-bool std_insert_ch_at(char ch) { return insch(ch) == OK; }
+bool std_insert_ch_at(uint32_t ch) { return insch(ch) == OK; }
 // 在光标处插入一行空白行，剩余部分往下滚动一行
 bool std_insert_line() { return insertln() == OK; }
 
@@ -40,7 +40,7 @@ bool w_flush(const WINDOW *win) { return wrefresh(win) == OK; }
 void w_move_cursor(const WINDOW *win, int x, int y) { wmove(win, y, x); }
 
 // 在光标后插入一个字符
-bool w_insert_ch_at(const WINDOW *win, char ch) {
+bool w_insert_ch_at(const WINDOW *win, uint32_t ch) {
   return winsch(win, ch) == OK;
 }
 // 在光标处插入一行空白行，剩余部分往下滚动一行
@@ -75,3 +75,5 @@ void pause_ms(int ms) { napms(ms); }
 bool get_cursor_pos(const WINDOW *win, int x, int y) {
   return getyx(win, y, x) == OK;
 }
+
+bool set_cursor_mode(int n) { return curs_set(n) == OK; }

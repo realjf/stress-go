@@ -4,7 +4,7 @@
 // # Created Date: 2024/11/27 17:08:05                                         #
 // # Author: realjf                                                            #
 // # -----                                                                     #
-// # Last Modified: 2024/11/27 21:04:06                                        #
+// # Last Modified: 2024/11/28 22:02:07                                        #
 // # Modified By: realjf                                                       #
 // # -----                                                                     #
 // #                                                                           #
@@ -20,7 +20,7 @@
 
 //======================================标准窗口============================================
 // 从输入中读取一个字符
-char std_get_ch();
+uint32_t std_get_ch();
 // 从输入中读取字符串
 int std_get_str(char *str);
 // 从输入中读取指定字符串
@@ -30,7 +30,7 @@ int std_scan_w(char *format, ...);
 
 //======================================自定义窗口============================================
 // 从输入中读取一个字符
-char w_get_ch(const WINDOW *win);
+uint32_t w_get_ch(const WINDOW *win);
 // 从输入中读取字符串
 int w_get_str(const WINDOW *win, char *str);
 // 从输入中读取指定字符串
@@ -41,7 +41,7 @@ int w_scan_w(const WINDOW *win, char *format, ...);
 //======================================通用============================================
 
 // 将字符放回输入缓存中
-bool unget_ch(char ch);
+bool unget_ch(uint32_t ch);
 
 // 清空键盘输入缓存
 bool clear_input();

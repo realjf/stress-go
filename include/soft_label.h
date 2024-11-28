@@ -4,7 +4,7 @@
 // # Created Date: 2024/11/28 09:10:29                                         #
 // # Author: realjf                                                            #
 // # -----                                                                     #
-// # Last Modified: 2024/11/28 10:50:22                                        #
+// # Last Modified: 2024/11/28 22:02:07                                        #
 // # Modified By: realjf                                                       #
 // # -----                                                                     #
 // #                                                                           #
@@ -35,4 +35,4 @@ bool remove_soft_label();
 // 重新在屏幕上显示软标签
 bool restore_soft_label();
 
-#endif    /* __SOFT_LABEL_H__ */
+#endif /* __SOFT_LABEL_H__ */

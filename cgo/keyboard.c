@@ -4,7 +4,7 @@
 // # Created Date: 2024/11/27 17:09:07                                         #
 // # Author: realjf                                                            #
 // # -----                                                                     #
-// # Last Modified: 2024/11/27 21:05:52                                        #
+// # Last Modified: 2024/11/28 22:02:07                                        #
 // # Modified By: realjf                                                       #
 // # -----                                                                     #
 // #                                                                           #
@@ -13,7 +13,7 @@
 #include "keyboard.h"
 
 //======================================标准窗口============================================
-char std_get_ch() {
+uint32_t std_get_ch() {
   // 如果getch报错，可以通过getch() == ERR进行判断
   return getch();
 }
@@ -32,7 +32,7 @@ int std_scan_w(char *format, ...) {
 
 //======================================自定义窗口============================================
 // 从输入中读取一个字符
-char w_get_ch(const WINDOW *win) { return wgetch(win); }
+uint32_t w_get_ch(const WINDOW *win) { return wgetch(win); }
 // 从输入中读取字符串
 int w_get_str(const WINDOW *win, char *str) { return wgetstr(win, str); }
 // 从输入中读取指定字符串
@@ -50,7 +50,7 @@ int w_scan_w(const WINDOW *win, char *format, ...) {
 
 //======================================通用============================================
 
-bool unget_ch(char ch) { return ungetch(ch) == OK; }
+bool unget_ch(uint32_t ch) { return ungetch(ch) == OK; }
 
 bool clear_input() { return flushinp() == OK; }
 // 关闭回显

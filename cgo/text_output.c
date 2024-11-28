@@ -4,7 +4,7 @@
 // # Created Date: 2024/11/27 10:54:30                                         #
 // # Author: realjf                                                            #
 // # -----                                                                     #
-// # Last Modified: 2024/11/27 20:51:39                                        #
+// # Last Modified: 2024/11/28 22:02:07                                        #
 // # Modified By: realjf                                                       #
 // # -----                                                                     #
 // #                                                                           #
@@ -13,7 +13,7 @@
 #include "text_output.h"
 
 //======================================标准窗口输出============================================
-void std_echo(char ch) {
+void std_echo(uint32_t ch) {
   // 输出字符
   addch(ch);
 }
@@ -32,7 +32,7 @@ void std_echo_fmt(char *format, ...) {
   va_end(args);
 }
 
-void std_echo_at(int y, int x, char ch) { mvaddch(y, x, ch); }
+void std_echo_at(int y, int x, uint32_t ch) { mvaddch(y, x, ch); }
 
 void std_echo_str_at(int y, int x, char *str) { mvaddstr(y, x, str); }
 
@@ -47,7 +47,7 @@ void std_echo_fmt_at(int y, int x, char *format, ...) {
 
 //======================================自定义窗口输出============================================
 
-void w_echo(const WINDOW *win, char ch) { waddch(win, ch); }
+void w_echo(const WINDOW *win, uint32_t ch) { waddch(win, ch); }
 void w_echo_str(const WINDOW *win, char *str) { waddstr(win, str); }
 void w_echo_fmt(const WINDOW *win, char *format, ...) {
   // 定义va_list变量
@@ -58,7 +58,7 @@ void w_echo_fmt(const WINDOW *win, char *format, ...) {
   va_end(args);
 }
 
-void w_echo_at(const WINDOW *win, int y, int x, char ch) {
+void w_echo_at(const WINDOW *win, int y, int x, uint32_t ch) {
   mvwaddch(win, y, x, ch);
 }
 void w_echo_str_at(const WINDOW *win, int y, int x, char *str) {

@@ -4,7 +4,7 @@
 // # Created Date: 2024/11/27 22:34:29                                         #
 // # Author: realjf                                                            #
 // # -----                                                                     #
-// # Last Modified: 2024/11/27 23:14:21                                        #
+// # Last Modified: 2024/11/28 22:01:17                                        #
 // # Modified By: realjf                                                       #
 // # -----                                                                     #
 // #                                                                           #
@@ -26,7 +26,7 @@ bool std_nout_pad(const WINDOW *pad, int pad_x, int pad_y, int scr_x, int scr_y,
 bool std_update_pad();
 
 // 输出字符，需要在调用std_flush_pad()清空之后调用才能显示在屏幕上
-bool std_pad_echo_ch(const WINDOW *pad, char ch);
+bool std_pad_echo_ch(const WINDOW *pad, uint32_t ch);
 
 //======================================自定义窗口============================================
 // 复制pad内容到窗口进行显示
