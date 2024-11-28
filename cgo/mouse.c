@@ -1,31 +1,26 @@
 // #############################################################################
-// # File: text_style.c                                                        #
+// # File: mouse.c                                                             #
 // # Project: cgo                                                              #
-// # Created Date: 2024/11/27 12:36:49                                         #
+// # Created Date: 2024/11/28 09:51:36                                         #
 // # Author: realjf                                                            #
 // # -----                                                                     #
-// # Last Modified: 2024/11/28 09:24:31                                        #
+// # Last Modified: 2024/11/28 11:03:53                                        #
 // # Modified By: realjf                                                       #
 // # -----                                                                     #
 // #                                                                           #
 // #############################################################################
 
-#include "text_style.h"
+#include "mouse.h"
 
 //======================================标准窗口============================================
-bool std_text_attr_set(int at) { return attrset(at) == OK; }
-bool std_enable_text_attr(int at) { return attron(at) == OK; }
-bool std_disable_text_attr(int at) { return attroff(at) == OK; }
 
 //======================================自定义窗口============================================
-bool w_text_attr_set(const WINDOW *win, int at) {
-  return wattrset(win, at) == OK;
-}
-bool w_enable_text_attr(const WINDOW *win, int at) {
-  return wattron(win, at) == OK;
-}
-bool w_disable_text_attr(const WINDOW *win, int at) {
-  return wattroff(win, at) == OK;
-}
 
 //======================================通用============================================
+
+uint32_t enable_mouse_capture(uint32_t mouse_event_mask,
+                              uint32_t *old_mouse_event_mask) {
+  return mousemask(mouse_event_mask, old_mouse_event_mask);
+}
+
+bool get_mouse_event(MEVENT *event) { return getmouse(event) == OK; }

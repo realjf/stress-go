@@ -68,3 +68,5 @@ libform.so
 # 使用 --enable-widec 进行编译时，库名称后面加w，如ncursesw.a，标识支持宽字符
 
 ```
+#### 软标签初始化值n的标签数量与排列关系
+![soft-label-n](./soft_label_n.png)

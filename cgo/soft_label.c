@@ -1,31 +1,29 @@
 // #############################################################################
-// # File: text_style.c                                                        #
+// # File: soft_label.c                                                        #
 // # Project: cgo                                                              #
-// # Created Date: 2024/11/27 12:36:49                                         #
+// # Created Date: 2024/11/28 09:11:07                                         #
 // # Author: realjf                                                            #
 // # -----                                                                     #
-// # Last Modified: 2024/11/28 09:24:31                                        #
+// # Last Modified: 2024/11/28 09:52:42                                        #
 // # Modified By: realjf                                                       #
 // # -----                                                                     #
 // #                                                                           #
 // #############################################################################
 
-#include "text_style.h"
+#include "soft_label.h"
 
 //======================================标准窗口============================================
-bool std_text_attr_set(int at) { return attrset(at) == OK; }
-bool std_enable_text_attr(int at) { return attron(at) == OK; }
-bool std_disable_text_attr(int at) { return attroff(at) == OK; }
 
 //======================================自定义窗口============================================
-bool w_text_attr_set(const WINDOW *win, int at) {
-  return wattrset(win, at) == OK;
-}
-bool w_enable_text_attr(const WINDOW *win, int at) {
-  return wattron(win, at) == OK;
-}
-bool w_disable_text_attr(const WINDOW *win, int at) {
-  return wattroff(win, at) == OK;
-}
 
 //======================================通用============================================
+bool init_soft_label(int n) { return slk_init(n) == OK; }
+
+bool set_soft_label(int label_no, char *text, int pos) {
+  return slk_set(label_no, text, pos) == OK;
+}
+bool show_soft_label() { return slk_refresh() == OK; }
+
+bool remove_soft_label() { return slk_clear() == OK; }
+
+bool restore_soft_label() { return slk_restore() == OK; }
