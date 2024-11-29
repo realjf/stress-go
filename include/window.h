@@ -4,7 +4,7 @@
 // # Created Date: 2024/11/27 10:15:54                                         #
 // # Author: realjf                                                            #
 // # -----                                                                     #
-// # Last Modified: 2024/11/28 22:05:10                                        #
+// # Last Modified: 2024/11/29 11:17:54                                        #
 // # Modified By: realjf                                                       #
 // # -----                                                                     #
 // #                                                                           #
@@ -25,12 +25,12 @@ bool std_set_bg_color(int color);
 // 滚动n行
 bool std_scroll_n_line(int n);
 
-// 画边框
-// left,right,top,bottom 边线
-// uleft,uright,lleft,lright 角
-bool std_draw_border(uint32_t left, uint32_t right, uint32_t top,
-                     uint32_t bottom, uint32_t uleft, uint32_t uright,
-                     uint32_t lleft, uint32_t lright);
+// 保存屏幕内容到文件
+bool std_screen_dump(const char *file);
+// 加载文件内容到屏幕
+bool std_screen_restore(const char *file);
+
+void std_set_bg_attr(uint32_t a);
 
 //======================================自定义窗口============================================
 
@@ -38,9 +38,12 @@ bool w_set_bg_color(const WINDOW *win, int color);
 // 滚动n行
 bool w_scroll_n_line(const WINDOW *win, int n);
 
-bool w_draw_border(const WINDOW *win, uint32_t left, uint32_t right,
-                   uint32_t top, uint32_t bottom, uint32_t uleft,
-                   uint32_t uright, uint32_t lleft, uint32_t lright);
+// 保存窗口内容到文件
+bool w_put_win(const WINDOW *win, FILE *file);
+// 加载文件内容到新窗口
+WINDOW *w_get_win(FILE *file);
+
+void w_set_bg_attr(const WINDOW *win, uint32_t a);
 
 //======================================通用============================================
 
@@ -52,15 +55,17 @@ WINDOW *new_win(int x, int y, int width, int height);
 WINDOW *new_subwin(const WINDOW *pwin, int x, int y, int width, int height);
 // 子窗口，x和y相对于父窗口的位置
 WINDOW *new_derwin(const WINDOW *pwin, int x, int y, int width, int height);
+// 获取子窗口左上角在父窗口的坐标
+// win是子窗口
+bool get_subwin_pos(const WINDOW *subwin, int x, int y);
 
-// 闪烁屏幕
-bool enable_flash();
-// 蜂鸣声
-bool enable_beep();
+
 
 // 获取屏幕大小
 /* y 行数， x 列数*/
 bool get_win_size(const WINDOW *win, int x, int y);
+// 获取窗口左上角在屏幕中的坐标
+bool get_win_pos(const WINDOW *win, int x, int y);
 
 // 重绘整个窗口
 bool touch_win(const WINDOW *win);
@@ -68,7 +73,7 @@ bool touch_win(const WINDOW *win);
 bool touch_line(const WINDOW *win, int y, int n);
 
 //  销毁窗口(父窗口存在的话需要重绘touch和刷新flush)
-bool delete_win(const WINDOW *win);
+bool delete_win(WINDOW *win);
 
 // 复制窗口内容
 bool overlay_win(const WINDOW *swin, const WINDOW *dwin);
@@ -90,5 +95,10 @@ bool scroll_a_line(const WINDOW *win);
 // 移动窗口
 bool move_win(const WINDOW *win, int x, int y);
 
+// 获取终端波特率
+int get_baudrate();
 
-#endif /* __WINDOW_H__ */
+// 获取当前窗口背景属性
+uint32_t get_current_win_attr(const WINDOW *win);
+
+#endif    /* __WINDOW_H__ */

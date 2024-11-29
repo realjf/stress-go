@@ -4,7 +4,7 @@
 // # Created Date: 2024/11/27 10:54:30                                         #
 // # Author: realjf                                                            #
 // # -----                                                                     #
-// # Last Modified: 2024/11/28 22:02:07                                        #
+// # Last Modified: 2024/11/29 10:19:52                                        #
 // # Modified By: realjf                                                       #
 // # -----                                                                     #
 // #                                                                           #
@@ -17,6 +17,8 @@ void std_echo(uint32_t ch) {
   // 输出字符
   addch(ch);
 }
+
+void std_echo_ch(uint32_t ch) { echochar(ch); }
 
 void std_echo_str(char *str) {
   // 输出字符串
@@ -48,6 +50,7 @@ void std_echo_fmt_at(int y, int x, char *format, ...) {
 //======================================自定义窗口输出============================================
 
 void w_echo(const WINDOW *win, uint32_t ch) { waddch(win, ch); }
+void w_echo_ch(const WINDOW *win, uint32_t ch) { wechochar(win, ch); }
 void w_echo_str(const WINDOW *win, char *str) { waddstr(win, str); }
 void w_echo_fmt(const WINDOW *win, char *format, ...) {
   // 定义va_list变量

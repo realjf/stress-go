@@ -4,7 +4,7 @@
 // # Created Date: 2024/11/28 22:03:52                                         #
 // # Author: realjf                                                            #
 // # -----                                                                     #
-// # Last Modified: 2024/11/28 22:11:09                                        #
+// # Last Modified: 2024/11/29 11:11:22                                        #
 // # Modified By: realjf                                                       #
 // # -----                                                                     #
 // #                                                                           #
@@ -25,6 +25,13 @@ bool std_draw_v_line(uint32_t ch, int height) {
   return vline(ch, height) == OK;
 }
 
+bool std_draw_mv_h_line(int x, int y, uint32_t ch, int width) {
+  return mvhline(y, x, ch, width) == OK;
+}
+bool std_draw_mv_v_line(int x, int y, uint32_t ch, int height) {
+  return mvvline(y, x, ch, height) == OK;
+}
+
 //======================================自定义窗口============================================
 
 bool w_draw_border(const WINDOW *win, uint32_t left, uint32_t right,
@@ -40,6 +47,14 @@ bool w_draw_h_line(const WINDOW *win, uint32_t ch, int width) {
 // 绘制垂直线
 bool w_draw_v_line(const WINDOW *win, uint32_t ch, int height) {
   return wvline(win, ch, height) == OK;
+}
+
+bool w_draw_mv_h_line(const WINDOW *win, int x, int y, uint32_t ch, int width) {
+  return mvwhline(win, y, x, ch, width) == OK;
+}
+bool w_draw_mv_v_line(const WINDOW *win, int x, int y, uint32_t ch,
+                      int height) {
+  return mvwvline(win, y, x, ch, height) == OK;
 }
 
 //======================================通用============================================

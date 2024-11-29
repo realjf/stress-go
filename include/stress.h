@@ -4,7 +4,7 @@
 // # Created Date: 2024/11/27 10:24:42                                         #
 // # Author: realjf                                                            #
 // # -----                                                                     #
-// # Last Modified: 2024/11/27 23:18:51                                        #
+// # Last Modified: 2024/11/29 11:19:42                                        #
 // # Modified By: realjf                                                       #
 // # -----                                                                     #
 // #                                                                           #
@@ -21,5 +21,9 @@
 #include "window.h"
 #include "pad.h"
 #include "control.h"
+#include "draw.h"
+#include "mouse.h"
+#include "soft_label.h"
+#include "screen.h"
 
 #endif /* __STRESS_H__ */

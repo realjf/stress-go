@@ -4,7 +4,7 @@
 // # Created Date: 2024/11/28 22:03:16                                         #
 // # Author: realjf                                                            #
 // # -----                                                                     #
-// # Last Modified: 2024/11/28 22:10:43                                        #
+// # Last Modified: 2024/11/29 11:10:02                                        #
 // # Modified By: realjf                                                       #
 // # -----                                                                     #
 // #                                                                           #
@@ -29,6 +29,9 @@ bool std_draw_border(uint32_t left, uint32_t right, uint32_t top,
 bool std_draw_h_line(uint32_t ch, int width);
 // 绘制垂直线，从光标处开始绘制
 bool std_draw_v_line(uint32_t ch, int height);
+// 在指定位置绘制水平线
+bool std_draw_mv_h_line(int x, int y, uint32_t ch, int width);
+bool std_draw_mv_v_line(int x, int y, uint32_t ch, int height);
 
 //======================================自定义窗口============================================
 
@@ -41,6 +44,10 @@ bool w_draw_border(const WINDOW *win, uint32_t left, uint32_t right,
 bool w_draw_h_line(const WINDOW *win, uint32_t ch, int width);
 // 绘制垂直线，从光标处开始绘制
 bool w_draw_v_line(const WINDOW *win, uint32_t ch, int height);
+
+// 在指定位置绘制水平线
+bool w_draw_mv_h_line(const WINDOW *win, int x, int y, uint32_t ch, int width);
+bool w_draw_mv_v_line(const WINDOW *win, int x, int y, uint32_t ch, int height);
 
 //======================================通用============================================
 

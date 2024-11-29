@@ -4,7 +4,7 @@
 // # Created Date: 2024/11/27 10:44:12                                         #
 // # Author: realjf                                                            #
 // # -----                                                                     #
-// # Last Modified: 2024/11/28 22:02:07                                        #
+// # Last Modified: 2024/11/29 11:23:16                                        #
 // # Modified By: realjf                                                       #
 // # -----                                                                     #
 // #                                                                           #
@@ -21,6 +21,8 @@
 
 /* 输出字符 */
 void std_echo(uint32_t ch);
+// 输出单个字符，性能好
+void std_echo_ch(uint32_t ch);
 // 输出字符串
 void std_echo_str(char *str);
 // 格式化输出
@@ -33,6 +35,7 @@ void std_echo_fmt_at(int y, int x, char *format, ...);
 
 //======================================自定义窗口输出============================================
 void w_echo(const WINDOW *win, uint32_t ch);
+void w_echo_ch(const WINDOW *win, uint32_t ch);
 void w_echo_str(const WINDOW *win, char *str);
 void w_echo_fmt(const WINDOW *win, char *format, ...);
 
@@ -42,4 +45,4 @@ void w_echo_fmt_at(const WINDOW *win, int y, int x, char *format, ...);
 
 //======================================通用============================================
 
-#endif /* __TEXT_OUTPUT_H__ */
+#endif    /* __TEXT_OUTPUT_H__ */

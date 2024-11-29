@@ -4,7 +4,7 @@
 // # Created Date: 2024/11/28 09:50:09                                         #
 // # Author: realjf                                                            #
 // # -----                                                                     #
-// # Last Modified: 2024/11/28 22:02:07                                        #
+// # Last Modified: 2024/11/29 11:17:14                                        #
 // # Modified By: realjf                                                       #
 // # -----                                                                     #
 // #                                                                           #
@@ -49,4 +49,4 @@ uint32_t enable_mouse_capture(uint32_t mouse_event_mask,
 
 bool get_mouse_event(MEVENT *event);
 
-#endif /* __MOUSE_H__ */
+#endif    /* __MOUSE_H__ */

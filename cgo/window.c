@@ -4,7 +4,7 @@
 // # Created Date: 2024/11/27 15:39:49                                         #
 // # Author: realjf                                                            #
 // # -----                                                                     #
-// # Last Modified: 2024/11/28 22:04:58                                        #
+// # Last Modified: 2024/11/29 11:18:05                                        #
 // # Modified By: realjf                                                       #
 // # -----                                                                     #
 // #                                                                           #
@@ -18,6 +18,13 @@ bool std_set_bg_color(int color) { return bkgd(COLOR_PAIR(color)) == OK; }
 // 滚动n行
 bool std_scroll_n_line(int n) { return scrl(n) == OK; }
 
+// 保存屏幕内容到文件
+bool std_screen_dump(const char *file) { return scr_dump(file) == OK; }
+// 加载文件内容到屏幕
+bool std_screen_restore(const char *file) { return scr_restore(file) == OK; }
+
+void std_set_bg_attr(uint32_t a) { bkgdset(a); }
+
 //======================================自定义窗口============================================
 
 bool w_set_bg_color(const WINDOW *win, int color) {
@@ -27,12 +34,14 @@ bool w_set_bg_color(const WINDOW *win, int color) {
 // 滚动n行
 bool w_scroll_n_line(const WINDOW *win, int n) { return wscrl(win, n) == OK; }
 
-bool w_draw_border(const WINDOW *win, uint32_t left, uint32_t right,
-                   uint32_t top, uint32_t bottom, uint32_t uleft,
-                   uint32_t uright, uint32_t lleft, uint32_t lright) {
-  return wborder(win, left, right, top, bottom, uleft, uright, lleft, lright) ==
-         OK;
+// 保存窗口内容到文件
+bool w_put_win(const WINDOW *win, FILE *file) {
+  return putwin(win, file) == OK;
 }
+// 加载文件内容到窗口
+WINDOW *w_get_win(FILE *file) { return getwin(file); }
+
+void w_set_bg_attr(const WINDOW *win, uint32_t a) { wbkgdset(win, a); }
 
 //======================================通用============================================
 
@@ -49,12 +58,16 @@ WINDOW *new_derwin(const WINDOW *pwin, int x, int y, int width, int height) {
   return derwin(pwin, height, width, y, x);
 }
 
-bool enable_flash() { return flash() == OK; }
-
-bool enable_beep() { return beep() == OK; }
+bool get_subwin_pos(const WINDOW *win, int x, int y) {
+  return getparyx(win, y, x) == OK;
+}
 
 bool get_win_size(const WINDOW *win, int x, int y) {
   return getmaxyx(win, y, x) == OK;
+}
+
+bool get_win_pos(const WINDOW *win, int x, int y) {
+  return getbegyx(win, y, x) == OK;
 }
 
 // 重绘整个窗口
@@ -65,7 +78,7 @@ bool touch_line(const WINDOW *win, int y, int n) {
 }
 
 // 清理窗口
-bool delete_win(const WINDOW *win) { return delwin(win) == OK; }
+bool delete_win(WINDOW *win) { return delwin(win) == OK; }
 
 // 复制窗口内容
 bool overlay_win(const WINDOW *swin, const WINDOW *dwin) {
@@ -95,3 +108,7 @@ bool scroll_a_line(const WINDOW *win) { return scroll(win) == OK; }
 bool move_win(const WINDOW *win, int x, int y) {
   return mvwin(win, y, x) == OK;
 }
+
+int get_baudrate() { return baudrate(); }
+
+uint32_t get_current_win_attr(const WINDOW *win) { return getbkgd(win); }
