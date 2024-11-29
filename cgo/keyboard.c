@@ -4,7 +4,7 @@
 // # Created Date: 2024/11/27 17:09:07                                         #
 // # Author: realjf                                                            #
 // # -----                                                                     #
-// # Last Modified: 2024/11/29 11:48:23                                        #
+// # Last Modified: 2024/11/30 00:03:49                                        #
 // # Modified By: realjf                                                       #
 // # -----                                                                     #
 // #                                                                           #
@@ -90,3 +90,5 @@ bool clear_input() { return flushinp() == OK; }
 bool has_key(int keycode) { return has_key(keycode); }
 
 char *get_keyname(int ch) { return keyname(ch); }
+
+char *get_control_code_name(uint32_t c) { return unctrl(c); }

@@ -4,7 +4,7 @@
 // # Created Date: 2024/11/27 15:39:49                                         #
 // # Author: realjf                                                            #
 // # -----                                                                     #
-// # Last Modified: 2024/11/29 11:18:05                                        #
+// # Last Modified: 2024/11/29 23:47:19                                        #
 // # Modified By: realjf                                                       #
 // # -----                                                                     #
 // #                                                                           #
@@ -25,6 +25,11 @@ bool std_screen_restore(const char *file) { return scr_restore(file) == OK; }
 
 void std_set_bg_attr(uint32_t a) { bkgdset(a); }
 
+// 设置滚动区域
+bool std_set_scroll_region(int from_line, int to_line) {
+  return setscrreg(from_line, to_line) == OK;
+}
+
 //======================================自定义窗口============================================
 
 bool w_set_bg_color(const WINDOW *win, int color) {
@@ -42,6 +47,11 @@ bool w_put_win(const WINDOW *win, FILE *file) {
 WINDOW *w_get_win(FILE *file) { return getwin(file); }
 
 void w_set_bg_attr(const WINDOW *win, uint32_t a) { wbkgdset(win, a); }
+
+// 设置滚动区域
+bool w_set_scroll_region(const WINDOW *win, int from_line, int to_line) {
+  return wsetscrreg(win, from_line, to_line) == OK;
+}
 
 //======================================通用============================================
 
@@ -112,3 +122,8 @@ bool move_win(const WINDOW *win, int x, int y) {
 int get_baudrate() { return baudrate(); }
 
 uint32_t get_current_win_attr(const WINDOW *win) { return getbkgd(win); }
+
+bool redraw_win(const WINDOW *win) { return redrawwin(win) != ERR; }
+
+bool enable_sync_subwin(const WINDOW *win) { return syncok(win, TRUE) == OK; }
+bool disable_sync_subwin(const WINDOW *win) { return syncok(win, FALSE) == OK; }

@@ -4,7 +4,7 @@
 // # Created Date: 2024/11/28 09:51:36                                         #
 // # Author: realjf                                                            #
 // # -----                                                                     #
-// # Last Modified: 2024/11/28 22:02:07                                        #
+// # Last Modified: 2024/11/29 22:09:42                                        #
 // # Modified By: realjf                                                       #
 // # -----                                                                     #
 // #                                                                           #
@@ -13,9 +13,19 @@
 #include "mouse.h"
 
 //======================================标准窗口============================================
+bool std_mouse_pos_to_screen(int *x, int *y) { return mouse_trafo(y, x, TRUE); }
+bool std_mouse_pos_to_window(int *x, int *y) {
+  return mouse_trafo(y, x, FALSE);
+}
 
 //======================================自定义窗口============================================
 
+bool w_mouse_pos_to_screen(const WINDOW *win, int *x, int *y) {
+  return wmouse_trafo(win, y, x, TRUE);
+}
+bool w_mouse_pos_to_window(const WINDOW *win, int *x, int *y) {
+  return wmouse_trafo(win, y, x, FALSE);
+}
 //======================================通用============================================
 
 uint32_t enable_mouse_capture(uint32_t mouse_event_mask,

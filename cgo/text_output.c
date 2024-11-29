@@ -4,7 +4,7 @@
 // # Created Date: 2024/11/27 10:54:30                                         #
 // # Author: realjf                                                            #
 // # -----                                                                     #
-// # Last Modified: 2024/11/29 10:19:52                                        #
+// # Last Modified: 2024/11/29 22:38:39                                        #
 // # Modified By: realjf                                                       #
 // # -----                                                                     #
 // #                                                                           #
@@ -47,6 +47,13 @@ void std_echo_fmt_at(int y, int x, char *format, ...) {
   va_end(args);
 }
 
+bool std_vprintw(const char *fmt, ...) {
+  va_list args;
+  int a = vw_printw(stdscr, fmt, args);
+  va_end(args);
+  return a == OK;
+}
+
 //======================================自定义窗口输出============================================
 
 void w_echo(const WINDOW *win, uint32_t ch) { waddch(win, ch); }
@@ -74,6 +81,13 @@ void w_echo_fmt_at(const WINDOW *win, int y, int x, char *format, ...) {
   va_start(args, format);
   mvwprintw(win, y, x, format, args);
   va_end(args);
+}
+
+bool w_vprintw(const WINDOW *win, const char *fmt, ...) {
+  va_list args;
+  int a = vw_printw(win, fmt, args);
+  va_end(args);
+  return a == OK;
 }
 
 //======================================通用============================================

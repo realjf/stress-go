@@ -4,7 +4,7 @@
 // # Created Date: 2024/11/27 11:02:02                                         #
 // # Author: realjf                                                            #
 // # -----                                                                     #
-// # Last Modified: 2024/11/29 11:22:20                                        #
+// # Last Modified: 2024/11/29 23:51:54                                        #
 // # Modified By: realjf                                                       #
 // # -----                                                                     #
 // #                                                                           #
@@ -34,6 +34,9 @@ bool std_erase_all() { return erase() == OK && flush(); }
 bool std_clear_to_bottom() { return clrtobot() == OK && flush(); }
 // 清空光标后到行尾处所有内容
 bool std_clear_to_eol() { return clrtoeol() == OK && flush(); }
+
+void std_enable_text_attr() { standout(); }
+void std_disable_text_attr() { standend(); }
 
 //======================================自定义窗口============================================
 
@@ -73,6 +76,9 @@ bool w_clear_to_eol(const WINDOW *win) {
   return wclrtoeol(win) == OK && w_flush(win);
 }
 
+void w_enable_text_attr(const WINDOW *win) { wstandout(win); }
+void w_disable_text_attr(const WINDOW *win) { wstandend(win); }
+
 //======================================通用============================================
 
 // 暂停毫秒
@@ -92,7 +98,7 @@ bool disable_cbreak_mode() { return nocbreak() == OK; }
 bool enable_cbreak_mode_with_halfdelay(int tenths) {
   return halfdelay(tenths) == OK;
 }
-void enable_cbreak_mode_with_timeout(int sec) { timeout(sec); }
+void enable_cbreak_mode_with_timeout(int ms) { timeout(ms); }
 
 bool enable_flush_all(const WINDOW *win) { return clearok(win, TRUE) == OK; }
 bool disable_flush_all(const WINDOW *win) { return clearok(win, FALSE) == OK; }
@@ -119,3 +125,6 @@ bool enable_beep() { return beep() == OK; }
 
 void enable_auto_flush(const WINDOW *win) { immedok(win, TRUE); }
 void disable_auto_flush(const WINDOW *win) { immedok(win, FALSE); }
+
+bool enable_nl_mode() { return nl() == OK; }
+bool disable_nl_mode() { return nonl() == OK; }

@@ -4,7 +4,7 @@
 // # Created Date: 2024/11/27 17:08:05                                         #
 // # Author: realjf                                                            #
 // # -----                                                                     #
-// # Last Modified: 2024/11/29 11:48:00                                        #
+// # Last Modified: 2024/11/30 00:03:21                                        #
 // # Modified By: realjf                                                       #
 // # -----                                                                     #
 // #                                                                           #
@@ -67,5 +67,7 @@ bool unget_ch(uint32_t ch);
 bool clear_input();
 
 char *get_keyname(int ch);
+
+char *get_control_code_name(uint32_t c);
 
 #endif /* __KEYBOARD_H__ */

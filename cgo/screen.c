@@ -4,7 +4,7 @@
 // # Created Date: 2024/11/29 10:11:09                                         #
 // # Author: realjf                                                            #
 // # -----                                                                     #
-// # Last Modified: 2024/11/29 10:14:41                                        #
+// # Last Modified: 2024/11/29 23:49:29                                        #
 // # Modified By: realjf                                                       #
 // # -----                                                                     #
 // #                                                                           #
@@ -23,6 +23,6 @@ SCREEN *new_term(const char *name, FILE *out, FILE *in) {
 }
 void delete_screen(SCREEN *sp) { delscreen(sp); }
 
-SCREEN* show_term(SCREEN *sp) {
-    return set_term(sp);
-}
+SCREEN *show_term(SCREEN *sp) { return set_term(sp); }
+
+char *get_term_name() { return termname(); }

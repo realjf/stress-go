@@ -4,7 +4,7 @@
 // # Created Date: 2024/11/27 22:34:29                                         #
 // # Author: realjf                                                            #
 // # -----                                                                     #
-// # Last Modified: 2024/11/29 10:17:27                                        #
+// # Last Modified: 2024/11/29 23:41:52                                        #
 // # Modified By: realjf                                                       #
 // # -----                                                                     #
 // #                                                                           #
@@ -44,4 +44,4 @@ WINDOW *new_subpad(const WINDOW *pad, int x, int y, int width, int height);
 
 bool delete_pad(const WINDOW *pad);
 
-#endif /* __PAD_H__ */
+#endif    /* __PAD_H__ */

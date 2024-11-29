@@ -4,7 +4,7 @@
 // # Created Date: 2024/11/27 10:15:54                                         #
 // # Author: realjf                                                            #
 // # -----                                                                     #
-// # Last Modified: 2024/11/29 11:17:54                                        #
+// # Last Modified: 2024/11/29 23:46:39                                        #
 // # Modified By: realjf                                                       #
 // # -----                                                                     #
 // #                                                                           #
@@ -32,6 +32,9 @@ bool std_screen_restore(const char *file);
 
 void std_set_bg_attr(uint32_t a);
 
+// 设置滚动区域
+bool std_set_scroll_region(int from_line, int to_line);
+
 //======================================自定义窗口============================================
 
 bool w_set_bg_color(const WINDOW *win, int color);
@@ -44,6 +47,9 @@ bool w_put_win(const WINDOW *win, FILE *file);
 WINDOW *w_get_win(FILE *file);
 
 void w_set_bg_attr(const WINDOW *win, uint32_t a);
+
+// 设置滚动区域
+bool w_set_scroll_region(const WINDOW *win, int from_line, int to_line);
 
 //======================================通用============================================
 
@@ -58,8 +64,6 @@ WINDOW *new_derwin(const WINDOW *pwin, int x, int y, int width, int height);
 // 获取子窗口左上角在父窗口的坐标
 // win是子窗口
 bool get_subwin_pos(const WINDOW *subwin, int x, int y);
-
-
 
 // 获取屏幕大小
 /* y 行数， x 列数*/
@@ -101,4 +105,11 @@ int get_baudrate();
 // 获取当前窗口背景属性
 uint32_t get_current_win_attr(const WINDOW *win);
 
-#endif    /* __WINDOW_H__ */
+// 重绘窗口
+bool redraw_win(const WINDOW *win);
+
+// 设置是否同步更新子窗口
+bool enable_sync_subwin(const WINDOW *win);
+bool disable_sync_subwin(const WINDOW *win);
+
+#endif /* __WINDOW_H__ */

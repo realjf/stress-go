@@ -4,7 +4,7 @@
 // # Created Date: 2024/11/29 10:08:23                                         #
 // # Author: realjf                                                            #
 // # -----                                                                     #
-// # Last Modified: 2024/11/29 10:22:09                                        #
+// # Last Modified: 2024/11/29 23:49:09                                        #
 // # Modified By: realjf                                                       #
 // # -----                                                                     #
 // #                                                                           #
@@ -26,5 +26,7 @@ SCREEN *new_term(const char *name, FILE *out, FILE *in);
 void delete_screen(SCREEN *sp);
 // 设置并显示新屏幕，返回旧屏幕
 SCREEN *show_term(SCREEN *sp);
+// 获取终端名称
+char *get_term_name();
 
 #endif /* __SCREEN_H__ */

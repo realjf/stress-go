@@ -4,7 +4,7 @@
 // # Created Date: 2024/11/28 09:11:07                                         #
 // # Author: realjf                                                            #
 // # -----                                                                     #
-// # Last Modified: 2024/11/28 22:02:07                                        #
+// # Last Modified: 2024/11/29 23:33:58                                        #
 // # Modified By: realjf                                                       #
 // # -----                                                                     #
 // #                                                                           #
@@ -27,3 +27,11 @@ bool show_soft_label() { return slk_refresh() == OK; }
 bool remove_soft_label() { return slk_clear() == OK; }
 
 bool restore_soft_label() { return slk_restore() == OK; }
+
+bool set_soft_label_color(short color_pair_number) {
+  return slk_color(color_pair_number) != ERR;
+}
+
+char *get_soft_label_name(int labnum) { return slk_label(labnum); }
+
+bool touch_soft_lable() { return slk_touch() != ERR; }

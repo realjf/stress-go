@@ -4,7 +4,7 @@
 // # Created Date: 2024/11/28 09:50:09                                         #
 // # Author: realjf                                                            #
 // # -----                                                                     #
-// # Last Modified: 2024/11/29 11:17:14                                        #
+// # Last Modified: 2024/11/29 22:11:28                                        #
 // # Modified By: realjf                                                       #
 // # -----                                                                     #
 // #                                                                           #
@@ -40,7 +40,17 @@
 
 //======================================标准窗口============================================
 
+// 将窗口坐标转换为屏幕坐标
+bool std_mouse_pos_to_screen(int *x, int *y);
+// 将屏幕坐标转换为窗口坐标
+bool std_mouse_pos_to_window(int *x, int *y);
+
 //======================================自定义窗口============================================
+
+// 将窗口坐标转换为屏幕坐标
+bool w_mouse_pos_to_screen(const WINDOW *win, int *x, int *y);
+// 将屏幕坐标转换为窗口坐标
+bool w_mouse_pos_to_window(const WINDOW *win, int *x, int *y);
 
 //======================================通用============================================
 // 启用后，可以通过getch()获取输入，如果为EVENT_MOUSE事件，则可以通过get_mouse_event获取鼠标事件内容
@@ -49,4 +59,4 @@ uint32_t enable_mouse_capture(uint32_t mouse_event_mask,
 
 bool get_mouse_event(MEVENT *event);
 
-#endif    /* __MOUSE_H__ */
+#endif /* __MOUSE_H__ */

@@ -4,7 +4,7 @@
 // # Created Date: 2024/11/27 11:01:12                                         #
 // # Author: realjf                                                            #
 // # -----                                                                     #
-// # Last Modified: 2024/11/29 11:22:29                                        #
+// # Last Modified: 2024/11/29 23:52:46                                        #
 // # Modified By: realjf                                                       #
 // # -----                                                                     #
 // #                                                                           #
@@ -42,6 +42,10 @@ bool std_clear_to_bottom();
 // 清空光标后到行尾处所有内容
 bool std_clear_to_eol();
 
+// 开启和关闭窗口文本属性
+void std_enable_text_attr();
+void std_disable_text_attr();
+
 //======================================自定义窗口============================================
 
 // 刷新屏幕，只刷新修改的部分
@@ -67,6 +71,10 @@ bool w_clear_to_bottom(const WINDOW *win);
 // 清空光标后到行尾处所有内容
 bool w_clear_to_eol(const WINDOW *win);
 
+// 开启和关闭窗口文本属性
+void w_enable_text_attr(const WINDOW *win);
+void w_disable_text_attr(const WINDOW *win);
+
 //======================================通用============================================
 // 暂停
 void pause_ms(int ms);
@@ -84,7 +92,7 @@ bool enable_cbreak_mode();
 bool disable_cbreak_mode();
 // tenths值从1到255，单位为秒/10，即20为2秒
 bool enable_cbreak_mode_with_halfdelay(int tenths);
-void enable_cbreak_mode_with_timeout(int sec);
+void enable_cbreak_mode_with_timeout(int ms);
 
 // 强制刷新全部内容
 bool enable_flush_all(const WINDOW *win);
@@ -117,5 +125,11 @@ bool enable_beep();
 // 启用内容变更自动刷新屏幕
 void enable_auto_flush(const WINDOW *win);
 void disable_auto_flush(const WINDOW *win);
+
+// UNIX将回车键生成\r\n符，而PC将回车键生成为\r
+// 启用换行符模式，即将\r换行也识别为\n回车，都是代码10
+bool enable_nl_mode();
+// 禁用换行符模式，将\r识别为代码13，\n识别为代码10
+bool disable_nl_mode();
 
 #endif /* __CONTROL_H__ */
