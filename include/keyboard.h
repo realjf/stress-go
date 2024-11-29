@@ -4,7 +4,7 @@
 // # Created Date: 2024/11/27 17:08:05                                         #
 // # Author: realjf                                                            #
 // # -----                                                                     #
-// # Last Modified: 2024/11/29 11:28:46                                        #
+// # Last Modified: 2024/11/29 11:48:00                                        #
 // # Modified By: realjf                                                       #
 // # -----                                                                     #
 // #                                                                           #
@@ -66,4 +66,6 @@ bool unget_ch(uint32_t ch);
 // 清空键盘输入缓存
 bool clear_input();
 
-#endif    /* __KEYBOARD_H__ */
+char *get_keyname(int ch);
+
+#endif /* __KEYBOARD_H__ */
