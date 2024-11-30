@@ -4,7 +4,7 @@
 // # Created Date: 2024/11/27 10:15:54                                         #
 // # Author: realjf                                                            #
 // # -----                                                                     #
-// # Last Modified: 2024/11/29 23:46:39                                        #
+// # Last Modified: 2024/11/30 19:55:28                                        #
 // # Modified By: realjf                                                       #
 // # -----                                                                     #
 // #                                                                           #
@@ -112,4 +112,4 @@ bool redraw_win(const WINDOW *win);
 bool enable_sync_subwin(const WINDOW *win);
 bool disable_sync_subwin(const WINDOW *win);
 
-#endif /* __WINDOW_H__ */
+#endif    /* __WINDOW_H__ */

@@ -4,7 +4,7 @@
 // # Created Date: 2024/11/27 11:01:12                                         #
 // # Author: realjf                                                            #
 // # -----                                                                     #
-// # Last Modified: 2024/11/29 23:52:46                                        #
+// # Last Modified: 2024/11/30 19:52:26                                        #
 // # Modified By: realjf                                                       #
 // # -----                                                                     #
 // #                                                                           #
@@ -131,5 +131,11 @@ void disable_auto_flush(const WINDOW *win);
 bool enable_nl_mode();
 // 禁用换行符模式，将\r识别为代码13，\n识别为代码10
 bool disable_nl_mode();
+
+bool reset_default_colors();
+
+// 启用环境变量，如：LINES/COLUMNS等，需要在init()函数前调用
+void enable_env_var();
+void disable_env_var();
 
 #endif /* __CONTROL_H__ */

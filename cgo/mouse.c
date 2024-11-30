@@ -4,7 +4,7 @@
 // # Created Date: 2024/11/28 09:51:36                                         #
 // # Author: realjf                                                            #
 // # -----                                                                     #
-// # Last Modified: 2024/11/29 22:09:42                                        #
+// # Last Modified: 2024/11/30 19:54:17                                        #
 // # Modified By: realjf                                                       #
 // # -----                                                                     #
 // #                                                                           #
@@ -34,3 +34,7 @@ uint32_t enable_mouse_capture(uint32_t mouse_event_mask,
 }
 
 bool get_mouse_event(MEVENT *event) { return getmouse(event) == OK; }
+
+bool is_clicked_within_win(const WINDOW *win, int x, int y) {
+  return wenclose(win, y, x);
+}

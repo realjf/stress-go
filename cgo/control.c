@@ -4,7 +4,7 @@
 // # Created Date: 2024/11/27 11:02:02                                         #
 // # Author: realjf                                                            #
 // # -----                                                                     #
-// # Last Modified: 2024/11/29 23:51:54                                        #
+// # Last Modified: 2024/11/30 19:51:36                                        #
 // # Modified By: realjf                                                       #
 // # -----                                                                     #
 // #                                                                           #
@@ -128,3 +128,8 @@ void disable_auto_flush(const WINDOW *win) { immedok(win, FALSE); }
 
 bool enable_nl_mode() { return nl() == OK; }
 bool disable_nl_mode() { return nonl() == OK; }
+
+bool reset_default_colors() { return use_default_colors() == OK; }
+
+void enable_env_var() { use_env(TRUE); }
+void disable_env_var() { use_env(FALSE); }
