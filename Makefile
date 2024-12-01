@@ -1,4 +1,4 @@
-VERSION="0.1.1"
+VERSION="2.0.1"
 BIN="bin/stress-go"
 ARCH="amd64"
 OS=linux

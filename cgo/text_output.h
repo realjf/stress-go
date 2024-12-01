@@ -5,7 +5,7 @@
 // # Created Date: 2024/11/27 10:44:12                                         #
 // # Author: realjf                                                            #
 // # -----                                                                     #
-// # Last Modified: 2024/12/01 14:32:08                                        #
+// # Last Modified: 2024/12/01 17:30:40                                        #
 // # Modified By: realjf                                                       #
 // # -----                                                                     #
 // #                                                                           #
@@ -50,4 +50,4 @@ bool w_vprintw(NWindow *win, const char *fmt, ...);
 
 //======================================通用============================================
 
-#endif /* __TEXT_OUTPUT_H__ */
+#endif    /* __TEXT_OUTPUT_H__ */
