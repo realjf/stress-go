@@ -1,10 +1,11 @@
+// text_color.h
 // #############################################################################
 // # File: text_color.h                                                        #
 // # Project: include                                                          #
 // # Created Date: 2024/11/27 15:05:38                                         #
 // # Author: realjf                                                            #
 // # -----                                                                     #
-// # Last Modified: 2024/11/29 11:06:09                                        #
+// # Last Modified: 2024/12/01 14:32:08                                        #
 // # Modified By: realjf                                                       #
 // # -----                                                                     #
 // #                                                                           #
@@ -13,7 +14,8 @@
 #ifndef __TEXT_COLOR_H__
 #define __TEXT_COLOR_H__
 
-#include <curses.h>
+#include "types.h"
+#include <ncursesw/ncurses.h>
 
 #define BLACK 1
 #define RED 2
@@ -43,7 +45,7 @@
 bool std_set_text_color(short color_pair_number, void *opts);
 
 //======================================自定义窗口============================================
-bool w_set_text_color(const WINDOW *win, short color_pair_number, void *opts);
+bool w_set_text_color(NWindow *win, short color_pair_number, void *opts);
 
 //======================================通用============================================
 // 开启终端颜色支持
@@ -58,4 +60,4 @@ bool new_color_pair(short pair, short f, short b);
 // 从一个颜色值中提取rgb值
 bool extract_rgb_from_color(short color, short *r, short *g, short *b);
 
-#endif    /* __TEXT_COLOR_H__ */
+#endif /* __TEXT_COLOR_H__ */

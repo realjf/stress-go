@@ -1,10 +1,11 @@
+// control.h
 // #############################################################################
 // # File: control.h                                                           #
 // # Project: include                                                          #
 // # Created Date: 2024/11/27 11:01:12                                         #
 // # Author: realjf                                                            #
 // # -----                                                                     #
-// # Last Modified: 2024/11/30 19:52:26                                        #
+// # Last Modified: 2024/12/01 14:32:08                                        #
 // # Modified By: realjf                                                       #
 // # -----                                                                     #
 // #                                                                           #
@@ -13,7 +14,8 @@
 #ifndef __CONTROL_H__
 #define __CONTROL_H__
 
-#include <curses.h>
+#include "types.h"
+#include <ncursesw/ncurses.h>
 
 //======================================标准窗口============================================
 // 刷新屏幕，只刷新修改的部分
@@ -23,7 +25,7 @@ bool std_flush();
 void std_move_cursor(int x, int y);
 
 // 在光标后插入一个字符
-bool std_insert_ch_at(uint32_t ch);
+bool std_insert_ch_at(Char ch);
 // 在光标处插入一行空白行，剩余部分往下滚动一行
 bool std_insert_line();
 // 删除光标后一个字符
@@ -43,43 +45,43 @@ bool std_clear_to_bottom();
 bool std_clear_to_eol();
 
 // 开启和关闭窗口文本属性
-void std_enable_text_attr();
-void std_disable_text_attr();
+void std_enable_term_display_text_attr();
+void std_disable_term_display_text_attr();
 
 //======================================自定义窗口============================================
 
 // 刷新屏幕，只刷新修改的部分
-bool w_flush(const WINDOW *win);
-void w_move_cursor(const WINDOW *win, int x, int y);
+bool w_flush(NWindow *win);
+void w_move_cursor(NWindow *win, int x, int y);
 // 在光标后插入一个字符
-bool w_insert_ch_at(const WINDOW *win, uint32_t ch);
+bool w_insert_ch_at(NWindow *win, Char ch);
 // 在光标处插入一行空白行，剩余部分往下滚动一行
-bool w_insert_line(const WINDOW *win);
+bool w_insert_line(NWindow *win);
 // 删除光标后一个字符
-bool w_delete_ch(const WINDOW *win);
+bool w_delete_ch(NWindow *win);
 // 删除某个光标位置后的一个字符
-bool w_mv_delete_ch(const WINDOW *win, int x, int y);
+bool w_mv_delete_ch(NWindow *win, int x, int y);
 // 删除光标所在的行
-bool w_delete_line(const WINDOW *win);
+bool w_delete_line(NWindow *win);
 
 // 清理命令
 // 清空屏幕
-bool w_clear_all(const WINDOW *win);
-bool w_erase_all(const WINDOW *win);
+bool w_clear_all(NWindow *win);
+bool w_erase_all(NWindow *win);
 // 清空光标后到屏幕底部所有内容
-bool w_clear_to_bottom(const WINDOW *win);
+bool w_clear_to_bottom(NWindow *win);
 // 清空光标后到行尾处所有内容
-bool w_clear_to_eol(const WINDOW *win);
+bool w_clear_to_eol(NWindow *win);
 
 // 开启和关闭窗口文本属性
-void w_enable_text_attr(const WINDOW *win);
-void w_disable_text_attr(const WINDOW *win);
+void w_enable_term_display_text_attr(NWindow *win);
+void w_disable_term_display_text_attr(NWindow *win);
 
 //======================================通用============================================
 // 暂停
 void pause_ms(int ms);
 // 获取光标位置，屏幕左上角为0,0
-bool get_cursor_pos(const WINDOW *win, int x, int y);
+bool get_cursor_pos(NWindow *win, int x, int y);
 // 获取光标位置，相对于真实物理屏幕的位置
 void get_cursor_real_pos(int x, int y);
 // 设置光标状态
@@ -95,8 +97,8 @@ bool enable_cbreak_mode_with_halfdelay(int tenths);
 void enable_cbreak_mode_with_timeout(int ms);
 
 // 强制刷新全部内容
-bool enable_flush_all(const WINDOW *win);
-bool disable_flush_all(const WINDOW *win);
+bool enable_flush_all(NWindow *win);
+bool disable_flush_all(NWindow *win);
 
 // 关闭回显
 bool disable_echo();
@@ -104,18 +106,18 @@ bool disable_echo();
 bool enable_echo();
 
 // 启用或关闭输入等待，主要影响读取输入函数
-bool enable_delay(const WINDOW *win);
-bool disable_delay(const WINDOW *win);
+bool enable_delay(NWindow *win);
+bool disable_delay(NWindow *win);
 
 // 如果需要读取特殊的键盘输入值，可以通过以下方法启用或关闭，通过getch获取键盘输入值
-bool enable_keypad(const WINDOW *win);
-bool disable_keypad(const WINDOW *win);
+bool enable_keypad(NWindow *win);
+bool disable_keypad(NWindow *win);
 
 // 启用软插入还是硬插入
 // enable表示软插入，即不会覆盖后面的数据，而是将后面数据往后移动
 // disable表示硬插入，即直接覆盖后面的数据
-void enable_idcok(const WINDOW *win);
-void disable_idcok(const WINDOW *win);
+void enable_idcok(NWindow *win);
+void disable_idcok(NWindow *win);
 
 // 闪烁屏幕
 bool enable_flash();
@@ -123,8 +125,8 @@ bool enable_flash();
 bool enable_beep();
 
 // 启用内容变更自动刷新屏幕
-void enable_auto_flush(const WINDOW *win);
-void disable_auto_flush(const WINDOW *win);
+void enable_auto_flush(NWindow *win);
+void disable_auto_flush(NWindow *win);
 
 // UNIX将回车键生成\r\n符，而PC将回车键生成为\r
 // 启用换行符模式，即将\r换行也识别为\n回车，都是代码10

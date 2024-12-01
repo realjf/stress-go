@@ -1,10 +1,11 @@
+// mouse.h
 // #############################################################################
 // # File: mouse.h                                                             #
 // # Project: include                                                          #
 // # Created Date: 2024/11/28 09:50:09                                         #
 // # Author: realjf                                                            #
 // # -----                                                                     #
-// # Last Modified: 2024/11/30 19:53:55                                        #
+// # Last Modified: 2024/12/01 14:32:08                                        #
 // # Modified By: realjf                                                       #
 // # -----                                                                     #
 // #                                                                           #
@@ -13,7 +14,8 @@
 #ifndef __MOUSE_H__
 #define __MOUSE_H__
 
-#include <curses.h>
+#include "types.h"
+#include <ncursesw/ncurses.h>
 
 // 鼠标事件
 #define MOUSE_BUTTON_LEFT_CLICKED BUTTON1_CLICKED
@@ -48,17 +50,17 @@ bool std_mouse_pos_to_window(int *x, int *y);
 //======================================自定义窗口============================================
 
 // 将窗口坐标转换为屏幕坐标
-bool w_mouse_pos_to_screen(const WINDOW *win, int *x, int *y);
+bool w_mouse_pos_to_screen(NWindow *win, int *x, int *y);
 // 将屏幕坐标转换为窗口坐标
-bool w_mouse_pos_to_window(const WINDOW *win, int *x, int *y);
+bool w_mouse_pos_to_window(NWindow *win, int *x, int *y);
 
 //======================================通用============================================
 // 启用后，可以通过getch()获取输入，如果为EVENT_MOUSE事件，则可以通过get_mouse_event获取鼠标事件内容
-uint32_t enable_mouse_capture(uint32_t mouse_event_mask,
-                              char *old_mouse_event_mask);
+MouseMask enable_mouse_capture(MouseMask mouse_event_mask,
+                               MouseMask *old_mouse_event_mask);
 
 bool get_mouse_event(MEVENT *event);
 
-bool is_clicked_within_win(const WINDOW *win, int x, int y);
+bool is_clicked_within_win(NWindow *win, int x, int y);
 
 #endif /* __MOUSE_H__ */

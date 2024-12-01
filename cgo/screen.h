@@ -1,45 +1,34 @@
+// screen.h
 // #############################################################################
-// # File: base.h                                                              #
+// # File: screen.h                                                            #
 // # Project: include                                                          #
-// # Created Date: 2024/11/27 23:16:36                                         #
+// # Created Date: 2024/11/29 10:08:23                                         #
 // # Author: realjf                                                            #
 // # -----                                                                     #
-// # Last Modified: 2024/11/29 11:07:40                                        #
+// # Last Modified: 2024/12/01 15:04:26                                        #
 // # Modified By: realjf                                                       #
 // # -----                                                                     #
 // #                                                                           #
 // #############################################################################
 
-#ifndef __BASE_H__
-#define __BASE_H__
+#ifndef __SCREEN_H__
+#define __SCREEN_H__
 
-#include <curses.h>
+#include "types.h"
+#include <ncursesw/ncurses.h>
 
 //======================================标准窗口============================================
 
 //======================================自定义窗口============================================
 
 //======================================通用============================================
+// 创建屏幕，结束屏幕需要调用shutdown()
+NScreen *new_term(const char *name, NFile *out, NFile *in);
+// 删除屏幕
+void destroy_screen(NScreen *sp);
+// 设置并显示新屏幕，返回旧屏幕
+NScreen *show_term(NScreen *sp);
+// 获取终端名称
+char *get_term_name();
 
-// 初始化ncurses
-bool init();
-
-// 关闭ncurses屏幕、窗口等
-void shutdown();
-
-bool is_shutdown();
-
-// 获取版本号
-const char *get_ncurses_version();
-
-// 终端是否支持插入和删除字符
-bool is_supported_ic();
-// 终端是否支持插入和删除行，或影响滚动的源文本内容
-bool is_supported_il();
-
-// 判断终端是否支持颜色文本
-bool is_supported_colors();
-// 确认终端是否支持修改颜色属性能力（新增颜色等）
-bool is_color_can_change();
-
-#endif /* __BASE_H__ */
+#endif /* __SCREEN_H__ */

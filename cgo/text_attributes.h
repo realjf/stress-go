@@ -1,10 +1,11 @@
+// text_attributes.h
 // #############################################################################
 // # File: text_attributes.h                                                   #
 // # Project: include                                                          #
 // # Created Date: 2024/11/27 13:37:48                                         #
 // # Author: realjf                                                            #
 // # -----                                                                     #
-// # Last Modified: 2024/11/29 09:24:41                                        #
+// # Last Modified: 2024/12/01 14:29:40                                        #
 // # Modified By: realjf                                                       #
 // # -----                                                                     #
 // #                                                                           #
@@ -13,7 +14,7 @@
 #ifndef __TEXT_ATTRIBUTES_H__
 #define __TEXT_ATTRIBUTES_H__
 
-#include <curses.h>
+#include <ncursesw/ncurses.h>
 
 /*  多个属性可以通过 | 竖线组合 */
 // 使用备选字符集显示文本

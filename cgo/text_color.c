@@ -1,10 +1,11 @@
+// text_color.c
 // #############################################################################
 // # File: text_color.c                                                        #
 // # Project: cgo                                                              #
 // # Created Date: 2024/11/27 15:05:58                                         #
 // # Author: realjf                                                            #
 // # -----                                                                     #
-// # Last Modified: 2024/11/29 11:06:21                                        #
+// # Last Modified: 2024/12/01 14:32:08                                        #
 // # Modified By: realjf                                                       #
 // # -----                                                                     #
 // #                                                                           #
@@ -20,13 +21,12 @@ bool std_set_text_color(short color_pair_number, void *opts) {
 
 //======================================自定义窗口============================================
 
-bool w_set_text_color(const WINDOW *win, short color_pair_number, void *opts) {
+bool w_set_text_color(NWindow *win, short color_pair_number, void *opts) {
   return wcolor_set(win, color_pair_number, opts) == OK;
 }
 //======================================通用============================================
 
 bool enable_color() { return start_color() == OK; }
-
 
 bool new_color(short new_color_number, short r, short g, short b) {
   return init_color(new_color_number, r, g, b) == OK;

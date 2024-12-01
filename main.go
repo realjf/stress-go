@@ -37,6 +37,7 @@ type Args struct {
 	Path           string // curl文件路径
 	Headers        Array  // 自定义头部信息
 	Body           string // post数据
+	Filename       string // 输出结构到文件
 }
 
 // 初始化参数
@@ -49,6 +50,7 @@ func Init() {
 		Path:           "",
 		Headers:        make([]string, 0),
 		Body:           "",
+		Filename:       "",
 	}
 }
 
@@ -62,6 +64,7 @@ func main() {
 	flag.StringVar(&args.Path, "p", "", "cURL文件路径")
 	flag.Var(&args.Headers, "H", "自定义头部信息，如：-H 'Content-Type: application/json'")
 	flag.StringVar(&args.Body, "b", "", "http post数据")
+	flag.StringVar(&args.Filename, "o", "", "输出结果到文件")
 	flag.Parse()
 
 	if args.Url == "" || args.ConcurrencyNum == 0 || args.RequestNum == 0 {
@@ -85,11 +88,15 @@ func main() {
 		return
 	}
 
+	win := cgo.NewWin()
+	defer win.Close()
+	win.Show()
+
 	go func(concurrencyNum uint64) {
-		cgo.StartWin()
-		cgo.PrintHeaderLine()
-		cgo.PrintHeader()
-		cgo.PrintDivider()
+		// cgo.StartWin()
+		// cgo.PrintHeaderLine()
+		// cgo.PrintHeader()
+		// cgo.PrintDivider()
 		// 时间
 		var (
 			processingTime uint64 // 处理总时间
@@ -133,51 +140,51 @@ func main() {
 				}
 
 				var (
-					qps              float64
-					averageTime      float64
-					maxTimeFloat     float64
-					minTimeFloat     float64
+					// qps              float64
+					// averageTime      float64
+					// maxTimeFloat     float64
+					// minTimeFloat     float64
 					requestTimeFloat float64
 				)
 
 				// 平均 每个协程成功数*总协程数据/总耗时 (每秒)
 				if processingTime != 0 {
-					qps = float64(successNum*1e9*concurrencyNum) / float64(processingTime)
+					// qps = float64(successNum*1e9*concurrencyNum) / float64(processingTime)
 				}
 
 				// 平均时长 总耗时/总请求数/并发数 纳秒=>毫秒
 				if successNum != 0 && concurrencyNum != 0 {
-					averageTime = float64(processingTime) / float64(successNum*1e6)
+					// averageTime = float64(processingTime) / float64(successNum*1e6)
 				}
 
 				// 纳秒=>毫秒
-				maxTimeFloat = float64(maxTime) / 1e6
-				minTimeFloat = float64(minTime) / 1e6
+				// maxTimeFloat = float64(maxTime) / 1e6
+				// minTimeFloat = float64(minTime) / 1e6
 				requestTimeFloat = float64(requestTime) / 1e9
 
 				var (
-					speed int64
+				// speed int64
 				)
 
 				if requestTimeFloat > 0 {
-					speed = int64(float64(receivedBytes) / requestTimeFloat)
+					// speed = int64(float64(receivedBytes) / requestTimeFloat)
 				} else {
-					speed = 0
+					// speed = 0
 				}
 				var (
-					receivedBytesStr string
-					speedStr         string
+				// receivedBytesStr string
+				// speedStr         string
 				)
 				// 判断获取下载字节长度是否是未知
 				if receivedBytes <= 0 {
-					receivedBytesStr = ""
-					speedStr = ""
+					// receivedBytesStr = ""
+					// speedStr = ""
 				} else {
-					receivedBytesStr = fmt.Sprintf("%d", receivedBytes)
-					speedStr = fmt.Sprintf("%d", speed)
+					// receivedBytesStr = fmt.Sprintf("%d", receivedBytes)
+					// speedStr = fmt.Sprintf("%d", speed)
 				}
 
-				cgo.PrintTd(requestTimeFloat, concurrencyNum, successNum, failureNum, qps, maxTimeFloat, minTimeFloat, averageTime, receivedBytesStr, speedStr)
+				// cgo.PrintTd(requestTimeFloat, concurrencyNum, successNum, failureNum, qps, maxTimeFloat, minTimeFloat, averageTime, receivedBytesStr, speedStr)
 			case <-endChan:
 				goto endTag
 			}
@@ -185,7 +192,7 @@ func main() {
 	endTag:
 		close(ch)
 		close(endChan)
-		cgo.EndWin()
+		// cgo.EndWin()
 	}(args.ConcurrencyNum)
 
 	server.Run(args.ConcurrencyNum, args.RequestNum, request, ch, endChan)

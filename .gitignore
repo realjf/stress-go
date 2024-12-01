@@ -19,3 +19,4 @@ bin
 
 deps/
 lib/
+build/

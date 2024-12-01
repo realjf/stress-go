@@ -1,10 +1,11 @@
+// soft_label.h
 // #############################################################################
 // # File: soft_label.h                                                        #
 // # Project: include                                                          #
 // # Created Date: 2024/11/28 09:10:29                                         #
 // # Author: realjf                                                            #
 // # -----                                                                     #
-// # Last Modified: 2024/11/29 23:34:40                                        #
+// # Last Modified: 2024/12/01 14:29:52                                        #
 // # Modified By: realjf                                                       #
 // # -----                                                                     #
 // #                                                                           #
@@ -13,7 +14,8 @@
 #ifndef __SOFT_LABEL_H__
 #define __SOFT_LABEL_H__
 
-#include <curses.h>
+#include "types.h"
+#include <ncursesw/ncurses.h>
 
 //======================================标准窗口============================================
 

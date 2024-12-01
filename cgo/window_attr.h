@@ -1,17 +1,18 @@
+// window_attr.h
 // #############################################################################
 // # File: window_attr.h                                                       #
 // # Project: include                                                          #
 // # Created Date: 2024/11/30 19:55:38                                         #
 // # Author: realjf                                                            #
 // # -----                                                                     #
-// # Last Modified: 2024/11/30 19:58:59                                        #
+// # Last Modified: 2024/12/01 14:32:08                                        #
 // # Modified By: realjf                                                       #
 // # -----                                                                     #
 // #                                                                           #
 // #############################################################################
 
-#ifndef __WINDOW_ATTR_H__
-#define __WINDOW_ATTR_H__
+#ifndef __NWindow_ATTR_H__
+#define __NWindow_ATTR_H__
 
 #define WIN_ATTR_SUB_WIN 0x01   // window is a subwindow
 #define WIN_ATTR_ENDLINE 0X02   // window is flush-right
@@ -21,4 +22,4 @@
 #define WIN_ATTR_HASMOVED 0x20  // cursor has moved since last refresh
 #define WIN_ATTR_WRAPPED 0x40   // cursor was just wrapped
 
-#endif /* __WINDOW_ATTR_H__ */
+#endif /* __NWindow_ATTR_H__ */

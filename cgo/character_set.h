@@ -1,10 +1,11 @@
+// character_set.h
 // #############################################################################
 // # File: character_set.h                                                     #
 // # Project: include                                                          #
 // # Created Date: 2024/11/30 20:51:17                                         #
 // # Author: realjf                                                            #
 // # -----                                                                     #
-// # Last Modified: 2024/11/30 21:03:33                                        #
+// # Last Modified: 2024/11/30 22:58:24                                        #
 // # Modified By: realjf                                                       #
 // # -----                                                                     #
 // #                                                                           #
@@ -13,7 +14,7 @@
 #ifndef __CHARACTER_SET_H__
 #define __CHARACTER_SET_H__
 
-#include <curses.h>
+#include <ncursesw/ncurses.h>
 
 // 特殊字符集
 #define CHAR_BLOCK ACS_BLOCK
